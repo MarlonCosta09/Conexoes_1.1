@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LETRAS E CÁLCULOS: Conexões Matemáticas</title>
+    <!-- Tailwind CSS CDN para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tone.js CDN para geração de áudio e efeitos sonoros -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <!-- Google Fonts: Inter para tipografia moderna e legível -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Define a fonte Inter para todo o corpo do documento */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1a2b; /* Fundo azul escuro profundo */
+            color: #e0e7ff; /* Cor do texto claro para contraste */
+            background-attachment: fixed; /* Mantém o fundo fixo ao rolar */
+            padding-bottom: 3rem; /* Espaçamento inferior para evitar sobreposição */
+
+            /* Padrão de fundo com elementos matemáticos e literários */
+            background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='20' font-family='Arial' font-size='20' fill='%232a3b4c' fill-opacity='0.6'%3EA%3C/text%3E%3Ctext x='60' y='40' font-family='Arial' font-size='18' fill='%232a3b4c' fill-opacity='0.6'%3Ex%C2%B2%2Bbx%2Bc%3D0%3C/text%3E%3Ctext x='10' y='70' font-family='Arial' font-size='16' fill='%232a3b4c' fill-opacity='0.6'%3EProblemas%3C/text%3E%3Ctext x='90' y='90' font-family='Arial' font-size='22' fill='%232a3b4c' fill-opacity='0.6'%3E%C3%B7%3C/text%3E%3Ctext x='40' y='120' font-family='Arial' font-size='19' fill='%232a3b4c' fill-opacity='0.6'%3E%CE%A3%3C/text%3E%3Ctext x='120' y='140' font-family='Arial' font-size='17' fill='%232a3b4c' fill-opacity='0.6'%3E%E2%88%ABf(x)dx%3C/text%3E%3Ctext x='70' y='170' font-family='Arial' font-size='15' fill='%232a3b4c' fill-opacity='0.6'%3EC%C3%A1lculo%3C/text%3E%3Ctext x='180' y='20' font-family='Arial' font-size='14' fill='%232a3b4c' fill-opacity='0.6'%3ED%3C/text%3E%3Ctext x='150' y='60' font-family='Arial' font-size='21' fill='%232a3b4c' fill-opacity='0.6'%3E%E2%88%9A16%3C/text%3E%3Ctext x='200' y='110' font-family='Arial' font-size='18' fill='%232a3b4c' fill-opacity='0.6'%3EEqua%C3%A7%C3%A3o%3C/text%3E%3Ctext x='10' y='200' font-family='Arial' font-size='16' fill='%232a3b4c' fill-opacity='0.6'%3E%2B%3C/text%3E%3Ctext x='200' y='210' font-family='Arial' font-size='20' fill='%232a3b4c' fill-opacity='0.6'%3E-%3C/text%3E%3Ctext x='170' y='190' font-family='Arial' font-size='17' fill='%232a3b4c' fill-opacity='0.6'%3E*%3C/text%3E%3Ctext x='100' y='10' font-family='Arial' font-size='15' fill='%232a3b4c' fill-opacity='0.6'%3ESoma%3C/text%3E%3Ctext x='140' y='230' font-family='Arial' font-size='18' fill='%232a3b4c' fill-opacity='0.6'%3E%CF%80%3C/text%3E%3Ctext x='30' y='250' font-family='Arial' font-size='16' fill='%232a3b4c' fill-opacity='0.6'%3EBhaskara%3C/text%3E%3Ctext x='220' y='260' font-family='Arial' font-size='15' fill='%232a3b4c' fill-opacity='0.6'%3E50%25%3C/text%3E%3Ctext x='250' y='150' font-family='Arial' font-size='19' fill='%232a3b4c' fill-opacity='0.6'%3E%E2%88%9A25%3C/text%3E%3Ctext x='10' y='100' font-family='Georgia' font-style='italic' font-size='11' fill='%232a3b4c' fill-opacity='0.6'%3E'Tudo %C3%A9 vaidade.'%3C/text%3E%3Ctext x='100' y='280' font-family='Georgia' font-style='italic' font-size='13' fill='%232a3b4c' fill-opacity='0.6'%3E'Mem%C3%B3rias P%C3%B3stumas'%3C/text%3E%3Ctext x='200' y='40' font-family='Arial' font-size='16' fill='%232a3b4c' fill-opacity='0.6'%3Elim%3C/text%3E%3Ctext x='230' y='80' font-family='Arial' font-size='14' fill='%232a3b4c' fill-opacity='0.6'%3E%E2%88%91%3C/text%3E%3Ctext x='10' y='150' font-family='Georgia' font-style='italic' font-size='11' fill='%232b3d4c' fill-opacity='0.6'%3E'O melhor meio de n%C3%A3o ter raz%C3%A3o %C3%A9 discorrer.'%3C/text%3E%3Ctext x='150' y='200' font-family='Georgia' font-style='italic' font-size='10' fill='%232b3d4c' fill-opacity='0.6'%3E'Quincas Borba'%3C/text%3E%3C/svg%3E");
+            background-size: 300px 300px; /* Tamanho de uma unidade do padrão */
+            background-repeat: repeat; /* Repete o padrão */
+        }
+        /* Estilos para a caixa de mensagem personalizada (modais genéricos) */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1a2b3c; /* Fundo da caixa de mensagem */
+            padding: 2rem;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* Sombra mais escura */
+            z-index: 1000;
+            text-align: center;
+            max-width: 90%;
+            border: 1px solid #3b82f6; /* Borda azul */
+            color: #e0e7ff; /* Texto claro */
+            display: none; /* Escondido por padrão, controlado via JS */
+        }
+        .message-box-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente mais escuro */
+            z-index: 999;
+            display: none; /* Escondido por padrão, controlado via JS */
+        }
+        /* Estilos para as opções de resposta */
+        .option-button {
+            /* Aplica classes Tailwind para estilo base e responsividade */
+            @apply bg-blue-700 text-white font-bold py-3 px-6 rounded-lg w-full transition-all duration-200 shadow-md transform;
+            position: relative; /* Necessário para posicionar o ícone de feedback */
+            overflow: hidden; /* Garante que o ícone não transborde */
+            /* Gradiente de fundo para um visual mais moderno */
+            background-image: linear-gradient(to right, #2563eb, #3b82f6); /* blue-600 to blue-500 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+            text-align: justify; /* Adicionado para justificar o texto */
+        }
+        /* Efeito de hover para os botões de opção não desabilitados */
+        .option-button:not(.disabled):hover {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb); /* blue-700 to blue-600 */
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.8); /* Sombra azul mais visível e intensa */
+        }
+        /* Sombra persistente após o clique para indicar seleção */
+        .option-button.selected-shadow {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.9); /* Sombra mais intensa para a seleção */
+        }
+        /* Estilo para opção correta */
+        .option-button.correct {
+            @apply bg-green-600; /* Tailwind green-600 */
+            background-image: linear-gradient(to right, #16a34a, #22c55e) !important; /* green-600 to green-500 */
+            background-color: #16a34a !important; /* Garante que o fundo seja verde */
+        }
+        /* Estilo para opção incorreta */
+        .option-button.incorrect {
+            @apply bg-red-600; /* Tailwind red-600 */
+            background-image: linear-gradient(to right, #dc2626, #ef4444) !important; /* red-600 to red-500 */
+            background-color: #dc2626 !important; /* Garante que o fundo seja vermelho */
+        }
+        /* Estilo para botões desabilitados */
+        .option-button.disabled {
+            @apply opacity-70 cursor-not-allowed; /* Menor opacidade e cursor de não permitido */
+            background-image: none; /* Remove gradiente quando desabilitado */
+            background-color: #4b5563; /* gray-600 */
+            box-shadow: none; /* Remove sombra */
+        }
+
+        /* Keyframes para o efeito de piscar da resposta correta */
+        @keyframes blink-correct {
+            0%, 100% { background-color: #16a34a; } /* green-600 */
+            50% { background-color: #86efac; } /* green-300 */
+        }
+        /* Classe para aplicar o efeito de piscar */
+        .option-button.blinking-correct {
+            animation: blink-correct 1s ease-in-out 2; /* Pisca 2 vezes por 1s cada, total 2s */
+        }
+        /* Estilo para o ícone de feedback (certo/errado) */
+        .feedback-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8rem; /* Tamanho maior para o ícone */
+            opacity: 0; /* Escondido por padrão */
+            transition: opacity 0.3s ease-out; /* Transição suave para aparecer */
+        }
+        .feedback-icon.show {
+            opacity: 1; /* Mostra o ícone */
+        }
+        /* Classes para as telas do jogo */
+        .screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%; /* Garante que o conteúdo ocupe a altura mínima */
+            width: 100%;
+            text-align: center;
+            display: none; /* Escondido por padrão, JavaScript controlará a visibilidade */
+        }
+        /* Estilo para a mensagem de feedback de acerto/erro */
+        #feedback-message {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            text-align: center;
+            min-height: 2rem; /* Garante que o espaço seja reservado */
+        }
+
+        /* Estilo para a caixa de ferramentas flutuante */
+        #tools-box {
+            position: fixed;
+            top: 1.5rem; /* Posição superior */
+            left: 1rem; /* Posição esquerda */
+            background-color: #1a2b3c; /* Fundo escuro */
+            padding: 0.75rem 1rem; /* Padding compacto */
+            border-radius: 0.75rem; /* Bordas arredondadas */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* Sombra */
+            z-index: 1000; /* Acima de outros elementos */
+            text-align: left;
+            border: 1px solid #3b82f6; /* Borda azul */
+            color: #e0e7ff; /* Texto claro */
+            display: flex; /* Layout flexível para os botões */
+            flex-direction: column;
+            gap: 0.5rem; /* Espaçamento entre os botões */
+            display: none; /* Inserido como hidden por padrão, JS controla a visibilidade */
+        }
+
+        /* Estilo para os botões dentro da caixa de ferramentas */
+        .tools-button {
+            background-color: #3b82f6; /* Tailwind blue-500 */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 100%; /* Ocupa a largura total da caixa */
+            text-align: center; /* Centraliza o texto */
+        }
+        .tools-button:hover {
+            background-color: #2563eb; /* Tailwind blue-600 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sobrescritas para cores específicas dos botões de ferramentas */
+        #toggle-letter-values-popup-btn {
+            background-color: #6d28d9; /* Tailwind purple-700 */
+        }
+        #toggle-letter-values-popup-btn:hover {
+            background-color: #5b21b6; /* Tailwind purple-800 */
+        }
+
+        #toggle-calculator-popup-btn {
+            background-color: #059669; /* Tailwind emerald-600 */
+        }
+        #toggle-calculator-popup-btn:hover {
+            background-color: #047857; /* Tailwind emerald-700 */
+        }
+
+        /* Estilo para o painel de informações do professor (fixo no canto superior direito) */
+        #professor-info-panel {
+            position: fixed;
+            top: 1.5rem; /* Distância do topo */
+            right: 1rem; /* Distância da direita */
+            background-color: #1a2b3c; /* Fundo escuro */
+            padding: 0.75rem 1.25rem; /* Padding compacto */
+            border-radius: 0.75rem; /* Bordas arredondadas */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* Sombra */
+            z-index: 1000; /* Acima de outros elementos */
+            text-align: center; /* Alinha o texto ao centro */
+            max-width: 200px; /* Largura máxima diminuída */
+            border: 1px solid #3b82f6; /* Borda azul */
+            color: #e0e7ff; /* Texto claro */
+            font-size: 0.875rem; /* Texto um pouco menor */
+        }
+        #professor-info-panel p {
+            margin-bottom: 0.25rem; /* Espaçamento menor entre as linhas */
+        }
+        #professor-info-panel p:last-child {
+            margin-bottom: 0; /* Remove margem do último parágrafo */
+        }
+
+        /* Estilo para os títulos principais usando a fonte padrão (Inter) */
+        #start-screen h1,
+        #game-screen h1,
+        #final-screen h1 {
+            font-family: 'Inter', sans-serif; /* Garante a fonte Inter */
+            /* Sombra de texto para efeito neon/brilho */
+            text-shadow: 0 0 5px #a78bfa, 0 0 10px #a78bfa, 0 0 15px #a78bfa, 0 0 20px #c4b5fd; /* purple-400, purple-300 */
+        }
+
+        /* Estilo para o container principal do jogo */
+        .game-container {
+            background-color: #1a2b3c; /* Darker blue-gray */
+            border-radius: 1.5rem; /* Mais arredondado */
+            /* Sombra azul mais forte e com brilho para destacar */
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.2);
+            padding: 1.5rem; /* Padding responsivo */
+            width: 100%;
+            max-width: 600px; /* Largura máxima para o conteúdo do jogo */
+            border: 2px solid #3b82f6; /* Borda azul mais proeminente */
+            position: relative; /* Para efeitos de pseudo-elementos se necessário */
+        }
+
+        /* Estilo para os inputs e selects */
+        input[type="text"],
+        input[type="password"],
+        input[type="number"], /* Adicionado para o input de número de questões */
+        select {
+            background-color: #2c3e50; /* Fundo mais escuro para inputs */
+            border: 1px solid #4b5563; /* Borda sutil */
+            transition: all 0.3s ease-in-out; /* Transição suave para foco */
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); /* Sombra interna para profundidade */
+        }
+        /* Efeito de foco para inputs e selects */
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus, /* Adicionado para o input de número de questões */
+        select:focus {
+            border-color: #0ea5e9; /* Tailwind sky-500 */
+            /* Anel de foco ciano e brilho */
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.5), 0 0 10px rgba(14, 165, 233, 0.7);
+        }
+
+        /* Estilo para os botões de ação (Iniciar, Próxima, Anterior, Reiniciar, Voltar) */
+        .action-button { /* Nova classe genérica para botões de ação */
+            /* Aplica classes Tailwind para estilo base e responsividade */
+            @apply text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95;
+            background-image: linear-gradient(to right, #4c51bf, #667eea); /* Indigo to Blue */
+            border: 1px solid #4338ca; /* Indigo-700 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra */
+        }
+        /* Efeito de hover para botões de ação */
+        .action-button:hover {
+            background-image: linear-gradient(to right, #3730a3, #4f46e5); /* Indigo-800 to Indigo-600 */
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6); /* Glow effect on hover */
+        }
+
+        /* Sobrescritas para cores específicas dos botões de ação */
+        #start-game-btn, #submit-question-quantity {
+            background-image: linear-gradient(to right, #16a34a, #22c55e); /* Green */
+            border-color: #15803d;
+        }
+        #start-game-btn:hover, #submit-question-quantity:hover {
+            background-image: linear-gradient(to right, #15803d, #16a34a);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
+        }
+
+        #next-question-btn, #submit-admin-restart-password {
+            background-image: linear-gradient(to right, #2563eb, #3b82f6); /* Blue */
+            border-color: #1d4ed8;
+        }
+        #next-question-btn:hover, #submit-admin-restart-password:hover {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        #prev-question-btn {
+            background-image: linear-gradient(to right, #7e22ce, #9333ea); /* Purple */
+            border-color: #6d28d9;
+        }
+        #prev-question-btn:hover {
+            background-image: linear-gradient(to right, #6d28d9, #7e22ce);
+            box-shadow: 0 6px 20px rgba(147, 51, 234, 0.6);
+        }
+
+        #restart-game-btn-final-screen {
+            background-image: linear-gradient(to right, #16a34a, #22c55e); /* Green */
+            border-color: #15803d;
+        }
+        #restart-game-btn-final-screen:hover {
+            background-image: linear-gradient(to right, #15803d, #16a34a);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
+        }
+
+        #back-to-start-btn, #cancel-admin-restart-password, #cancel-question-quantity, #generic-message-box-close-btn {
+            background-image: linear-gradient(to right, #dc2626, #ef4444); /* Red */
+            border-color: #b91c1c;
+        }
+        #back-to-start-btn:hover, #cancel-admin-restart-password:hover, #cancel-question-quantity:hover, #generic-message-box-close-btn:hover {
+            background-image: linear-gradient(to right, #b91c1c, #dc2626);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+        }
+
+        /* Estilo para painéis informativos (como "Como Jogar" e área da pergunta) */
+        .info-panel {
+            background-color: #2c3e50; /* Darker gray */
+            border-color: #4b5563; /* Borda mais visível */
+            border-radius: 1rem; /* Mais arredondado */
+            /* Sombra interna e brilho azul para painéis */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Estilo específico para a área da pergunta */
+        #question-area {
+            /* Sombra interna e brilho roxo para a área da pergunta */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 15px rgba(167, 139, 250, 0.3);
+            word-wrap: break-word; /* Quebra de linha para palavras longas */
+            overflow-wrap: break-word; /* Garante quebras de linha adequadas */
+            margin-bottom: 1rem;
+        }
+        #question-area p {
+            margin-bottom: 0; /* Remove margem inferior padrão de parágrafos */
+        }
+
+        /* Estilo para os pop-ups de valores das letras e calculadora */
+        .letter-values-popup,
+        .calculator-popup {
+            position: fixed;
+            opacity: 0; /* Escondido por padrão */
+            pointer-events: none; /* Impede interação quando escondido */
+            transform: translateY(-10px); /* Pequeno deslocamento para efeito de "queda" */
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transição suave */
+            width: 280px; /* Largura fixa do pop-up */
+            background-color: #1a2b3c; /* Fundo escuro */
+            padding: 1.5rem;
+            border-radius: 0.75rem; /* Bordas arredondadas uniformes */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Sombra ajustada */
+            z-index: 100; /* Acima de outros elementos */
+            color: #e0e7ff; /* Texto claro */
+            display: flex; /* Layout flexível */
+            flex-direction: column;
+            align-items: flex-start; /* Alinha o conteúdo à esquerda */
+            text-align: left; /* Garante que o texto dentro do pop-up também esteja alinhado à esquerda */
+        }
+        /* Borda específica para o pop-up de valores das letras */
+        .letter-values-popup {
+            border: 1px solid #3b82f6; /* Borda azul */
+        }
+        /* Borda específica para o pop-up da calculadora */
+        .calculator-popup {
+            border: 1px solid #059669; /* Borda verde escura */
+        }
+
+        /* Classe para mostrar os pop-ups */
+        .letter-values-popup.show,
+        .calculator-popup.show {
+            opacity: 1; /* Mostra o pop-up */
+            pointer-events: auto; /* Permite interação quando visível */
+            transform: translateY(0); /* Retorna à posição original para efeito de "queda" */
+        }
+        .letter-values-popup p {
+            margin-bottom: 0.5rem; /* Espaçamento abaixo do título */
+            width: 100%; /* Garante que o parágrafo ocupe toda a largura para alinhamento */
+        }
+        /* Adicionado para os spans dentro do popup de valores das letras */
+        #popup-letter-values-content {
+            display: flex;
+            flex-wrap: wrap; /* Permite que os spans quebrem para a próxima linha */
+            justify-content: flex-start; /* Alinha os itens ao início */
+            width: 100%; /* Ocupa a largura total do contêiner */
+            max-height: 200px; /* Altura máxima para o conteúdo, adiciona scroll se exceder */
+            overflow-y: auto; /* Adiciona scroll vertical se o conteúdo exceder a altura máxima */
+            padding-right: 0.5rem; /* Espaçamento para a barra de rolagem */
+        }
+        #popup-letter-values-content span {
+            font-size: 0.9rem; /* Tamanho da fonte para os valores das letras */
+            margin-right: 0.75rem; /* Espaçamento entre os pares letra=valor */
+            margin-bottom: 0.25rem; /* Espaçamento vertical entre as linhas */
+            flex-shrink: 0; /* Impede que os spans encolham */
+        }
+        #popup-letter-values-content span:last-child {
+            margin-right: 0; /* Remove margem do último span */
+        }
+
+        /* Estilo para o display da calculadora */
+        .calculator-display {
+            background-color: #0f172a; /* slate-900 */
+            color: #e0e7ff; /* indigo-100 */
+            font-size: 2.25rem; /* text-4xl */
+            padding: 0.75rem; /* p-3 */
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-bottom: 1rem; /* mb-4 */
+            width: 100%;
+            text-align: right;
+            overflow: hidden; /* Garante que o texto não transborde */
+            white-space: nowrap; /* Impede quebra de linha */
+            border: 1px solid #334155; /* slate-700 */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra interna */
+        }
+        /* Estilo para o grid de botões da calculadora */
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 colunas de largura igual */
+            gap: 0.5rem; /* Espaçamento entre os botões */
+            width: 100%;
+        }
+        /* Estilo base para os botões da calculadora */
+        .calculator-button {
+            /* Aplica classes Tailwind para estilo base e responsividade */
+            @apply bg-blue-700 text-white font-bold py-3 rounded-lg transition-all duration-200 shadow-md transform hover:scale-105 active:scale-95;
+            background-image: linear-gradient(to right, #2563eb, #3b82f6); /* blue-600 to blue-500 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .calculator-button:hover {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb); /* blue-700 to blue-600 */
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.8);
+        }
+        /* Estilo para botões de operador da calculadora */
+        .calculator-button.operator {
+            background-image: linear-gradient(to right, #f59e0b, #fbbf24); /* amber-500 to amber-400 */
+            border-color: #d97706; /* amber-600 */
+        }
+        .calculator-button.operator:hover {
+            background-image: linear-gradient(to right, #d97706, #f59e0b); /* amber-600 to amber-500 */
+            box-shadow: 0 6px 15px rgba(251, 191, 36, 0.8);
+        }
+        /* Estilo para o botão "Limpar" da calculadora */
+        .calculator-button.clear {
+            background-image: linear-gradient(to right, #dc2626, #ef4444); /* red-600 to red-500 */
+            border-color: #b91c1c; /* red-700 */
+        }
+        .calculator-button.clear:hover {
+            background-image: linear-gradient(to right, #b91c1c, #dc2626); /* red-700 to red-600 */
+            box-shadow: 0 6px 15px rgba(239, 68, 68, 0.8);
+        }
+        /* Estilo para o botão "Igual" da calculadora */
+        .calculator-button.equals {
+            background-image: linear-gradient(to right, #10b981, #34d399); /* emerald-600 to emerald-500 */
+            border-color: #047857; /* emerald-700 */
+        }
+        .calculator-button.equals:hover {
+            background-image: linear-gradient(to right, #047857, #10b981); /* emerald-700 to emerald-600 */
+            box-shadow: 0 6px 15px rgba(52, 211, 153, 0.8);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <!-- Texto do título nos cantos (pode ser usado para acessibilidade ou SEO) -->
+    <div class="fixed top-2 left-2 text-xs text-gray-400 z-10">Letras e Cálculos: Conexões Matemáticas</div>
+    <div class="fixed fixed top-2 right-2 text-xs text-gray-400 z-10">Letras e Cálculos: Conexões Matemáticas</div>
+
+    <!-- Caixa de Ferramentas (inicialmente oculta, visível durante o jogo) -->
+    <div id="tools-box">
+        <p class="font-bold mb-1">Ferramentas</p>
+        <button id="mute-button" class="tools-button">🔊 Som</button>
+        <button id="toggle-letter-values-popup-btn" class="tools-button">Valores das Letras</button>
+        <button id="toggle-calculator-popup-btn" class="tools-button">Calculadora</button>
+    </div>
+
+    <!-- Informações do Professor (fixas no canto superior direito) -->
+    <div id="professor-info-panel">
+        <p class="font-bold">Prof. Marlon Costa</p>
+        <p>Língua Portuguesa e Literatura</p>
+    </div>
+
+    <div class="game-container">
+        <!-- Tela de Início do Jogo -->
+        <div id="start-screen" class="screen">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-center text-yellow-400 mb-2 drop-shadow-lg">
+                LETRAS E CÁLCULOS: Conexões Matemáticas
+            </h1>
+            <p class="text-sm text-gray-400 text-center mb-4">CEEFMTI Washington Pinheiro Meirelles</p>
+            <hr class="border-t border-gray-600 w-2/3 mx-auto mb-8">
+
+            <p class="text-base text-gray-300 mb-8">
+                Teste seus conhecimentos em português e matemática de forma divertida!
+            </p>
+            <div class="w-full max-w-md mb-6 space-y-4">
+                <input type="text" id="student-name" placeholder="Seu Nome" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase border border-gray-600">
+                <input type="text" id="student-surname" placeholder="Seu Sobrenome" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase border border-gray-600">
+                <select id="student-class" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-600">
+                    <option value="">Selecione sua Turma...</option>
+                </select>
+            </div>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 w-full max-w-md">
+                <button id="start-game-btn" class="action-button">
+                    Iniciar Jogo
+                </button>
+            </div>
+
+            <!-- Painel "Como Jogar" -->
+            <div class="info-panel p-6 w-full max-w-md mt-6 shadow-xl">
+                <h2 class="text-xl font-semibold text-yellow-300 mb-4 border-b border-gray-500 pb-2">Como Jogar:</h2>
+                <ul class="list-disc list-inside text-gray-300 text-left space-y-2 text-sm">
+                    <li>Cada letra possui um valor numérico (A=1, B=2, etc.).</li>
+                    <li>As perguntas envolvem o cálculo de valores de palavras, somas, diferenças e conceitos de português.</li>
+                    <li>Você terá 4 opções para cada uma das perguntas.</li>
+                    <li>Se acertar, a opção piscará em verde. Se errar, sua opção ficará vermelha e a correta piscará em verde.</li>
+                    <li>Acentos e cedilhas são ignorados nos cálculos de palavras.</li>
+                    <li>Cada resposta correta vale 0.5 pontos.</li>
+                    <li>Cada aluno pode realizar a avaliação apenas uma vez.</li>
+                    <li>Você pode voltar para a questão anterior no máximo 2 vezes por jogo.</li>
+                    <li>A calculadora pode ser usada 2 vezes a cada 5 questões (exceto para a turma AEE, que não tem restrições).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tela do Jogo (inicialmente oculta) -->
+        <div id="game-screen" class="screen">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-center text-yellow-400 mb-2 drop-shadow-lg">
+                LETRAS E CÁLCULOS: Conexões Matemáticas
+            </h1>
+            <p class="text-sm text-gray-400 text-center mb-4">CEEFMTI Washington Pinheiro Meirelles</p>
+            <hr class="border-t border-gray-600 w-2/3 mx-auto mb-8">
+
+            <!-- Informações do Jogo (Pergunta atual e Pontuação) -->
+            <div class="flex justify-between items-center mb-6 text-lg font-semibold text-gray-300 w-full max-w-md">
+                <p>Pergunta: <span id="question-number">1</span> / <span id="total-questions"></span></p>
+                <p>Pontuação: <span id="score">0.0</span></p>
+            </div>
+
+            <!-- Área da Pergunta -->
+            <div id="question-area" class="info-panel p-6 shadow-inner mb-4">
+                <p id="question-text" class="text-xl md:text-2xl font-bold text-white text-center">
+                    <!-- Texto da pergunta será inserido aqui via JavaScript -->
+                </p>
+            </div>
+
+            <!-- Mensagem de feedback de acerto/erro -->
+            <div id="feedback-message" class="text-center mb-2">
+                <!-- Mensagem de feedback será inserida aqui via JavaScript -->
+            </div>
+
+            <!-- Opções de Resposta -->
+            <div id="options-container" class="grid grid-cols-1 gap-4">
+                <!-- Botões de opção serão inseridos aqui via JavaScript -->
+            </div>
+
+            <!-- Botões de Navegação (Próxima e Anterior) -->
+            <div class="text-center mt-8 hidden flex justify-center space-x-4" id="navigation-buttons-container">
+                <button id="prev-question-btn" class="action-button">
+                    Questão Anterior
+                </button>
+                <button id="next-question-btn" class="action-button">
+                    Próxima Pergunta
+                </button>
+            </div>
+        </div>
+
+        <!-- Tela Final (inicialmente oculta) -->
+        <div id="final-screen" class="screen">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-center text-yellow-400 mb-2 drop-shadow-lg">
+                LETRAS E CÁLCULOS: Conexões Matemáticas
+            </h1>
+            <p class="text-sm text-gray-400 text-center mb-4">CEEFMTI Washington Pinheiro Meirelles</p>
+            <hr class="border-t border-gray-600 w-2/3 mx-auto mb-8">
+            <p class="text-xl text-gray-300 mb-4">Parabéns, <span id="final-student-name" class="font-bold"></span>!</p>
+            <p class="text-lg text-gray-300 mb-2">Turma: <span id="final-student-class" class="font-semibold"></span></p>
+            <p class="text-2xl font-bold text-green-400 mb-4">Sua Pontuação Final: <span id="final-score">0.0</span></p>
+            <!-- Adicionado para exibir a data e hora -->
+            <p class="text-sm text-gray-300 mb-8">Data e Hora: <span id="final-datetime" class="font-semibold"></span></p>
+
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 w-full max-w-md">
+                <button id="restart-game-btn-final-screen" class="action-button">
+                    Reiniciar Jogo
+                </button>
+                <button id="back-to-start-btn" class="action-button">
+                    Voltar para Início
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Senha para Reiniciar Jogo (inicialmente oculta) -->
+    <div id="password-modal-overlay" class="message-box-overlay"></div>
+    <div id="password-modal" class="message-box">
+        <h2 class="text-xl font-semibold text-yellow-300 mb-4">Senha do Administrador</h2>
+        <input type="password" id="admin-restart-password-input" placeholder="Digite a senha" class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-600 mb-4">
+        <div class="flex justify-center space-x-4">
+            <button id="submit-admin-restart-password" class="action-button px-6 py-2 text-base">Confirmar</button>
+            <button id="cancel-admin-restart-password" class="action-button px-6 py-2 text-base">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Pop-up de Resolução da Questão (NOVO) -->
+    <div id="resolution-modal-overlay" class="message-box-overlay"></div>
+    <div id="resolution-modal" class="message-box">
+        <h2 class="text-xl font-semibold text-yellow-300 mb-4">Resolução da Questão</h2>
+        <p id="professor-emoji" class="text-5xl mb-4">👨‍🏫</p> <!-- Professor emoji -->
+        <div id="resolution-content" class="text-gray-200 text-left mb-6 p-4 bg-gray-700 rounded-lg overflow-auto max-h-60">
+            <!-- Resolução será inserida aqui via JavaScript -->
+        </div>
+        <button id="close-resolution-modal-btn" class="action-button px-6 py-2 text-base">Fechar</button>
+    </div>
+
+    <!-- Pop-up de Quantidade de Questões (NOVO) -->
+    <div id="question-quantity-modal-overlay" class="message-box-overlay"></div>
+    <div id="question-quantity-modal" class="message-box">
+        <h2 class="text-xl font-semibold text-yellow-300 mb-4">Número de Questões</h2>
+        <p class="text-gray-300 mb-4">Quantas questões você gostaria de jogar? (Máx: <span id="max-questions-display"></span>)</p>
+        <input type="number" id="question-quantity-input" min="1" value="20"
+               class="w-full p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-600 mb-4">
+        <div class="flex justify-center space-x-4">
+            <button id="submit-question-quantity" class="action-button px-6 py-2 text-base">Confirmar</button>
+            <button id="cancel-question-quantity" class="action-button px-6 py-2 text-base">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Generic Message Box (for "Uso da Calculadora Esgotado" and other alerts) -->
+    <div id="generic-message-box-overlay" class="message-box-overlay"></div>
+    <div id="generic-message-box" class="message-box">
+        <h2 id="generic-message-box-title" class="text-xl font-semibold text-yellow-300 mb-4"></h2>
+        <p id="generic-message-box-content" class="text-gray-200 mb-6"></p>
+        <button id="generic-message-box-close-btn" class="action-button px-6 py-2 text-base">Fechar</button>
+    </div>
+
+    <!-- Pop-up de Valores das Letras (inicialmente oculta) -->
+    <div id="letter-values-popup" class="letter-values-popup">
+        <h3 class="text-xl font-bold text-purple-300 mb-4">Valores das Letras</h3>
+        <div id="popup-letter-values-content">
+            <!-- Conteúdo será gerado via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Pop-up da Calculadora (inicialmente oculta) -->
+    <div id="calculator-popup" class="calculator-popup">
+        <h3 class="text-xl font-bold text-emerald-300 mb-4">Calculadora</h3>
+        <input type="text" id="calculator-display" class="calculator-display" value="0" readonly>
+        <div class="calculator-buttons">
+            <button class="calculator-button clear">C</button>
+            <button class="calculator-button operator">/</button>
+            <button class="calculator-button operator">*</button>
+            <button class="calculator-button operator">-</button>
+
+            <button class="calculator-button">7</button>
+            <button class="calculator-button">8</button>
+            <button class="calculator-button">9</button>
+            <button class="calculator-button operator">+</button>
+
+            <button class="calculator-button">4</button>
+            <button class="calculator-button">5</button>
+            <button class="calculator-button">6</button>
+            <button class="calculator-button equals row-span-2">=</button>
+
+            <button class="calculator-button">1</button>
+            <button class="calculator-button">2</button>
+            <button class="calculator-button">3</button>
+
+            <button class="calculator-button zero col-span-2">0</button>
+            <button class="calculator-button decimal">.</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mapeamento de Elementos do DOM para fácil acesso ---
+            const DOM = {
+                screens: {
+                    start: document.getElementById('start-screen'),
+                    game: document.getElementById('game-screen'),
+                    final: document.getElementById('final-screen')
+                },
+                inputs: {
+                    studentName: document.getElementById('student-name'),
+                    studentSurname: document.getElementById('student-surname'),
+                    studentClass: document.getElementById('student-class'),
+                    adminPassword: document.getElementById('admin-restart-password-input'),
+                    questionQuantity: document.getElementById('question-quantity-input')
+                },
+                buttons: {
+                    startGame: document.getElementById('start-game-btn'),
+                    nextQuestion: document.getElementById('next-question-btn'),
+                    prevQuestion: document.getElementById('prev-question-btn'),
+                    restartGameFinal: document.getElementById('restart-game-btn-final-screen'),
+                    backToStart: document.getElementById('back-to-start-btn'),
+                    mute: document.getElementById('mute-button'),
+                    toggleLetterValues: document.getElementById('toggle-letter-values-popup-btn'),
+                    toggleCalculator: document.getElementById('toggle-calculator-popup-btn'),
+                    submitAdminPassword: document.getElementById('submit-admin-restart-password'),
+                    cancelAdminPassword: document.getElementById('cancel-admin-restart-password'),
+                    closeResolutionModal: document.getElementById('close-resolution-modal-btn'),
+                    submitQuestionQuantity: document.getElementById('submit-question-quantity'),
+                    cancelQuestionQuantity: document.getElementById('cancel-question-quantity'),
+                    closeGenericMessageBox: document.getElementById('generic-message-box-close-btn')
+                },
+                displays: {
+                    questionNumber: document.getElementById('question-number'),
+                    totalQuestions: document.getElementById('total-questions'),
+                    score: document.getElementById('score'),
+                    questionText: document.getElementById('question-text'),
+                    feedbackMessage: document.getElementById('feedback-message'),
+                    optionsContainer: document.getElementById('options-container'),
+                    finalStudentName: document.getElementById('final-student-name'),
+                    finalStudentClass: document.getElementById('final-student-class'),
+                    finalScore: document.getElementById('final-score'),
+                    finalDateTime: document.getElementById('final-datetime'),
+                    calculatorDisplay: document.getElementById('calculator-display'),
+                    letterValuesContent: document.getElementById('popup-letter-values-content'),
+                    resolutionContent: document.getElementById('resolution-content'),
+                    maxQuestionsDisplay: document.getElementById('max-questions-display'),
+                    genericMessageBoxTitle: document.getElementById('generic-message-box-title'),
+                    genericMessageBoxContent: document.getElementById('generic-message-box-content')
+                },
+                modals: {
+                    password: document.getElementById('password-modal'),
+                    passwordOverlay: document.getElementById('password-modal-overlay'),
+                    letterValues: document.getElementById('letter-values-popup'),
+                    calculator: document.getElementById('calculator-popup'),
+                    resolution: document.getElementById('resolution-modal'),
+                    resolutionOverlay: document.getElementById('resolution-modal-overlay'),
+                    questionQuantity: document.getElementById('question-quantity-modal'),
+                    questionQuantityOverlay: document.getElementById('question-quantity-modal-overlay'),
+                    genericMessageBox: document.getElementById('generic-message-box'),
+                    genericMessageBoxOverlay: document.getElementById('generic-message-box-overlay')
+                },
+                panels: {
+                    toolsBox: document.getElementById('tools-box'),
+                    navigationButtons: document.getElementById('navigation-buttons-container')
+                }
+            };
+
+            // --- Estado Global do Jogo ---
+            const GAME_STATE = {
+                student: {
+                    name: '',
+                    surname: '',
+                    class: ''
+                },
+                currentQuestionIndex: 0,
+                score: 0.0,
+                answeredQuestions: [],
+                maxPrevMoves: 2,
+                currentPrevMoves: 0,
+                isMuted: false,
+                questions: [],
+                questionPool: [],
+                adminPassword: 'wpm2025',
+                calculatorUsesAvailable: 0, // Usos totais permitidos da calculadora
+                calculatorUsesUsed: 0 // Usos já feitos da calculadora
+            };
+
+            // --- Configurações e Dados do Jogo ---
+            const CONFIG = {
+                scorePerCorrectAnswer: 0.5,
+                totalQuestions: 20,
+                maxSelectableQuestions: 50,
+                classes: ['7º 01', '8º 01', '8º 02', 'AEE'],
+                letterValues: {
+                    'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10,
+                    'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18, 'S': 19, 'T': 20,
+                    'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26
+                }
+            };
+
+            // --- Funções de Áudio (Tone.js) ---
+            let synth = null;
+            async function playSound(note, duration = '8n') {
+                if (GAME_STATE.isMuted) return;
+                if (!synth) {
+                    await Tone.start();
+                    synth = new Tone.Synth().toDestination();
+                }
+                synth.triggerAttackRelease(note, duration);
+            }
+
+            // --- Funções Auxiliares de UI ---
+            /**
+             * Exibe uma tela específica do jogo e oculta as outras.
+             * @param {string} screenId - O ID da tela a ser exibida ('start', 'game', 'final').
+             */
+            function showScreen(screenId) {
+                Object.values(DOM.screens).forEach(screen => screen.style.display = 'none');
+                DOM.screens[screenId].style.display = 'flex';
+                DOM.panels.toolsBox.style.display = (screenId === 'game') ? 'flex' : 'none';
+            }
+
+            /**
+             * Exibe um modal (caixa de diálogo) e seu overlay.
+             * @param {HTMLElement} modalElement - O elemento do modal a ser exibido.
+             * @param {HTMLElement} overlayElement - O elemento de overlay do modal.
+             */
+            function showModal(modalElement, overlayElement) {
+                modalElement.style.display = 'block';
+                overlayElement.style.display = 'block';
+            }
+
+            /**
+             * Oculta um modal (caixa de diálogo) e seu overlay.
+             * @param {HTMLElement} modalElement - O elemento do modal a ser ocultado.
+             * @param {HTMLElement} overlayElement - O elemento de overlay do modal.
+             */
+            function hideModal(modalElement, overlayElement) {
+                modalElement.style.display = 'none';
+                overlayElement.style.display = 'none';
+            }
+
+            /**
+             * Exibe uma caixa de mensagem genérica.
+             * @param {string} message - O conteúdo da mensagem.
+             * @param {string} title - O título da caixa de mensagem.
+             * @param {string} type - O tipo da mensagem ('info', 'success', 'error') para estilização.
+             */
+            function showMessageBox(message, title = 'Aviso', type = 'info') {
+                DOM.displays.genericMessageBoxTitle.textContent = title;
+                DOM.displays.genericMessageBoxContent.textContent = message;
+
+                DOM.displays.genericMessageBoxTitle.className = 'text-xl font-semibold mb-4'; // Reset classes
+                if (type === 'error') {
+                    DOM.displays.genericMessageBoxTitle.classList.add('text-red-400');
+                } else if (type === 'success') {
+                    DOM.displays.genericMessageBoxTitle.classList.add('text-green-400');
+                } else {
+                    DOM.displays.genericMessageBoxTitle.classList.add('text-yellow-300'); // Default info color
+                }
+
+                showModal(DOM.modals.genericMessageBox, DOM.modals.genericMessageBoxOverlay);
+            }
+
+            /**
+             * Alterna a visibilidade de um pop-up lateral e ajusta sua posição.
+             * @param {HTMLElement} popupElement - O elemento do pop-up.
+             * @param {HTMLElement} triggerButton - O botão que acionou o pop-up, para posicionamento.
+             */
+            function togglePopup(popupElement, triggerButton) {
+                const isCurrentlyShown = popupElement.classList.contains('show');
+
+                // Esconde todos os popups antes de mostrar o desejado
+                DOM.modals.letterValues.classList.remove('show');
+                DOM.modals.calculator.classList.remove('show');
+                DOM.modals.letterValues.style.pointerEvents = 'none';
+                DOM.modals.calculator.style.pointerEvents = 'none';
+                DOM.modals.letterValues.style.transform = 'translateY(-10px)';
+                DOM.modals.calculator.style.transform = 'translateY(-10px)';
+
+                // Garante que outros modais estejam ocultos
+                hideModal(DOM.modals.resolution, DOM.modals.resolutionOverlay);
+                hideModal(DOM.modals.questionQuantity, DOM.modals.questionQuantityOverlay);
+                hideModal(DOM.modals.password, DOM.modals.passwordOverlay);
+                hideModal(DOM.modals.genericMessageBox, DOM.modals.genericMessageBoxOverlay);
+
+                // Ajusta o border-radius para ser uniforme quando o popup aparece abaixo
+                DOM.modals.letterValues.style.borderRadius = '0.75rem';
+                DOM.modals.calculator.style.borderRadius = '0.75rem';
+
+                if (popupElement === DOM.modals.calculator) {
+                    if (isCurrentlyShown) {
+                        // Se a calculadora já está aberta, apenas fecha
+                        popupElement.classList.remove('show');
+                        popupElement.style.pointerEvents = 'none';
+                        popupElement.style.transform = 'translateY(-10px)';
+                        return;
+                    }
+
+                    // Verifica o limite de uso da calculadora antes de abrir
+                    if (GAME_STATE.calculatorUsesUsed >= GAME_STATE.calculatorUsesAvailable) {
+                        showMessageBox('O uso da calculadora está esgotado para este jogo. Você pode usá-la 2 vezes a cada 5 questões.', 'Uso da Calculadora Esgotado', 'error');
+                        return; // Não abre a calculadora
+                    } else {
+                        GAME_STATE.calculatorUsesUsed++; // Incrementa o uso quando a calculadora é aberta
+                        // Não atualiza mais o display de usos restantes
+                    }
+                }
+
+                if (!isCurrentlyShown) {
+                    popupElement.classList.add('show');
+                    popupElement.style.pointerEvents = 'auto'; // Permite interação
+                    popupElement.style.transform = 'translateY(0)'; // Retorna à posição original
+                    // Posiciona o popup abaixo da caixa de ferramentas
+                    const toolsBoxRect = DOM.panels.toolsBox.getBoundingClientRect();
+                    popupElement.style.top = `${toolsBoxRect.bottom + 10}px`; // 10px de margem abaixo da caixa
+                    popupElement.style.left = `${toolsBoxRect.left}px`;
+                }
+            }
+
+            /**
+             * Atualiza o estado de habilitação/desabilitação do botão da calculadora.
+             */
+            function updateCalculatorButtonState() {
+                // A calculadora é desabilitada apenas se os usos disponíveis forem 0 e os usados forem maiores ou iguais a 0.
+                // Para AEE, calculatorUsesAvailable será Number.MAX_SAFE_INTEGER, então esta condição nunca será verdadeira.
+                if (GAME_STATE.calculatorUsesAvailable > 0 && GAME_STATE.calculatorUsesUsed >= GAME_STATE.calculatorUsesAvailable) {
+                    DOM.buttons.toggleCalculator.disabled = true;
+                    DOM.buttons.toggleCalculator.classList.add('disabled');
+                } else {
+                    DOM.buttons.toggleCalculator.disabled = false;
+                    DOM.buttons.toggleCalculator.classList.remove('disabled');
+                }
+            }
+
+            /**
+             * Exibe uma mensagem de feedback ao usuário (correta/incorreta).
+             * @param {string} message - O texto da mensagem.
+             * @param {string} type - O tipo de mensagem ('correct' ou 'incorrect') para estilização.
+             */
+            function displayFeedback(message, type) {
+                DOM.displays.feedbackMessage.textContent = message;
+                DOM.displays.feedbackMessage.className = 'text-center mb-2'; // Reseta classes
+                if (type === 'correct') {
+                    DOM.displays.feedbackMessage.classList.add('text-green-400');
+                } else if (type === 'incorrect') {
+                    DOM.displays.feedbackMessage.classList.add('text-red-400');
+                }
+            }
+
+            // --- Lógica do Jogo ---
+
+            // Bancos de questões por turma
+            const questionBanks = {
+                '7º 01': [
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "SOL"?',
+                        answer: calculateWordValue('SOL'),
+                        options: shuffleArray([calculateWordValue('SOL'), calculateWordValue('LUA'), calculateWordValue('CEU'), calculateWordValue('MAR')])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "PATO" vale ' + calculateWordValue('PATO') + ', e "GATO" vale ' + calculateWordValue('GATO') + ', qual a soma dos dois valores?',
+                        answer: calculateWordValue('PATO') + calculateWordValue('GATO'),
+                        options: shuffleArray([calculateWordValue('PATO') + calculateWordValue('GATO'), calculateWordValue('PATO') + calculateWordValue('GATO') + 2, calculateWordValue('PATO') + calculateWordValue('GATO') - 1, calculateWordValue('PATO') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "X" é o valor da palavra "PAZ" mais 3, qual o valor de X?',
+                        answer: calculateWordValue('PAZ') + 3,
+                        options: shuffleArray([calculateWordValue('PAZ') + 3, calculateWordValue('PAZ') + 2, calculateWordValue('PAZ') + 5, calculateWordValue('PAZ') - 1])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "CASA" multiplicado por 2?',
+                        answer: calculateWordValue('CASA') * 2,
+                        options: shuffleArray([calculateWordValue('CASA') * 2, calculateWordValue('CASA') + 2, calculateWordValue('CASA') * 3, calculateWordValue('CASA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "FLOR" vale ' + calculateWordValue('FLOR') + ', quanto é 20 menos (o valor de "FLOR" dividido por 2)?',
+                        answer: 20 - (calculateWordValue('FLOR') / 2),
+                        options: shuffleArray([20 - (calculateWordValue('FLOR') / 2), 20 + (calculateWordValue('FLOR') / 2), 20 - calculateWordValue('FLOR'), 20 + calculateWordValue('FLOR')])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "FLOR" dividido por 3?',
+                        answer: calculateWordValue('FLOR') / 3,
+                        options: shuffleArray([calculateWordValue('FLOR') / 3, calculateWordValue('FLOR') * 3, calculateWordValue('FLOR') - 3, calculateWordValue('FLOR') + 3])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "Y" é o valor da palavra "LUA" dividido por 4, qual o valor de Y?',
+                        answer: calculateWordValue('LUA') / 4,
+                        options: shuffleArray([calculateWordValue('LUA') / 4, calculateWordValue('LUA') * 4, calculateWordValue('LUA') + 4, calculateWordValue('LUA') - 4])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "ESCOLA" menos o valor de "ALUNO"?',
+                        answer: calculateWordValue('ESCOLA') - calculateWordValue('ALUNO'),
+                        options: shuffleArray([calculateWordValue('ESCOLA') - calculateWordValue('ALUNO'), calculateWordValue('ESCOLA') + calculateWordValue('ALUNO'), calculateWordValue('ESCOLA') * 2, calculateWordValue('ALUNO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: (valor de "CÃO" + valor de "GATO") - valor de "PATO"',
+                        answer: (calculateWordValue('CÃO') + calculateWordValue('GATO')) - calculateWordValue('PATO'),
+                        options: shuffleArray([(calculateWordValue('CÃO') + calculateWordValue('GATO')) - calculateWordValue('PATO'), calculateWordValue('CÃO') + calculateWordValue('GATO'), calculateWordValue('PATO'), calculateWordValue('CÃO') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "LÁPIS" vale ' + calculateWordValue('LÁPIS') + ', e "CANETA" vale ' + calculateWordValue('CANETA') + ', qual o valor de "LÁPIS" mais "CANETA" dividido por 2?',
+                        answer: (calculateWordValue('LÁPIS') + calculateWordValue('CANETA')) / 2,
+                        options: shuffleArray([(calculateWordValue('LÁPIS') + calculateWordValue('CANETA')) / 2, calculateWordValue('LÁPIS') + calculateWordValue('CANETA'), calculateWordValue('LÁPIS') * 2, calculateWordValue('CANETA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "Z" é o valor da palavra "MESA" multiplicado por 2, qual o valor de Z?',
+                        answer: calculateWordValue('MESA') * 2,
+                        options: shuffleArray([calculateWordValue('MESA') * 2, calculateWordValue('MESA') + 2, calculateWordValue('MESA') / 2, calculateWordValue('MESA') - 1])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "AMIGO" mais o valor de "AMIGA"?',
+                        answer: calculateWordValue('AMIGO') + calculateWordValue('AMIGA'),
+                        options: shuffleArray([calculateWordValue('AMIGO') + calculateWordValue('AMIGA'), calculateWordValue('AMIGO'), calculateWordValue('AMIGA'), calculateWordValue('AMIGO') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é (o valor de "LIVRO" menos o valor de "PAPEL") multiplicado por 3?',
+                        answer: (calculateWordValue('LIVRO') - calculateWordValue('PAPEL')) * 3,
+                        options: shuffleArray([(calculateWordValue('LIVRO') - calculateWordValue('PAPEL')) * 3, calculateWordValue('LIVRO') - calculateWordValue('PAPEL'), calculateWordValue('LIVRO') * 2, calculateWordValue('PAPEL') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "LIVRO" dividido por 2?',
+                        answer: calculateWordValue('LIVRO') / 2,
+                        options: shuffleArray([calculateWordValue('LIVRO') / 2, calculateWordValue('LIVRO') * 2, calculateWordValue('LIVRO') - 2, calculateWordValue('LIVRO') + 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "A" é o valor da palavra "ESCOLA" menos 6, qual o valor de A?',
+                        answer: calculateWordValue('ESCOLA') - 6,
+                        options: shuffleArray([calculateWordValue('ESCOLA') - 6, calculateWordValue('ESCOLA') + 6, calculateWordValue('ESCOLA') / 2, calculateWordValue('ESCOLA') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "PAIS" mais o valor de "MÃE"?',
+                        answer: calculateWordValue('PAIS') + calculateWordValue('MÃE'),
+                        options: shuffleArray([calculateWordValue('PAIS') + calculateWordValue('MÃE'), calculateWordValue('PAIS'), calculateWordValue('MÃE'), calculateWordValue('PAIS') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é 5 vezes o valor de "SOL" mais 3?',
+                        answer: (5 * calculateWordValue('SOL')) + 3,
+                        options: shuffleArray([(5 * calculateWordValue('SOL')) + 3, 5 * calculateWordValue('SOL'), calculateWordValue('SOL') + 3, 5 + 3])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "ARVORE" menos o valor de "FOLHA"?',
+                        answer: calculateWordValue('ARVORE') - calculateWordValue('FOLHA'),
+                        options: shuffleArray([calculateWordValue('ARVORE') - calculateWordValue('FOLHA'), calculateWordValue('ARVORE') + calculateWordValue('FOLHA'), calculateWordValue('ARVORE') * 2, calculateWordValue('FOLHA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "B" é o valor da palavra "CÉU" dividido por 3, qual o valor de B?',
+                        answer: calculateWordValue('CÉU') / 3,
+                        options: shuffleArray([calculateWordValue('CÉU') / 3, calculateWordValue('CÉU') * 3, calculateWordValue('CÉU') + 3, calculateWordValue('CÉU') - 3])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "CRIANÇA" dividido por 3?',
+                        answer: calculateWordValue('CRIANÇA') / 3,
+                        options: shuffleArray([calculateWordValue('CRIANÇA') / 3, calculateWordValue('CRIANÇA') * 3, calculateWordValue('CRIANÇA') - 3, calculateWordValue('CRIANÇA') + 3])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é (o valor de "ESCOLA" + o valor de "LIVRO") dividido por 3?',
+                        answer: (calculateWordValue('ESCOLA') + calculateWordValue('LIVRO')) / 3,
+                        options: shuffleArray([(calculateWordValue('ESCOLA') + calculateWordValue('LIVRO')) / 3, calculateWordValue('ESCOLA') + calculateWordValue('LIVRO'), calculateWordValue('ESCOLA') * 2, calculateWordValue('LIVRO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "ESCOLA" vale ' + calculateWordValue('ESCOLA') + ', e "LIVRO" vale ' + calculateWordValue('LIVRO') + ', qual a soma dos dois valores?',
+                        answer: calculateWordValue('ESCOLA') + calculateWordValue('LIVRO'),
+                        options: shuffleArray([calculateWordValue('ESCOLA') + calculateWordValue('LIVRO'), calculateWordValue('ESCOLA') - calculateWordValue('LIVRO'), calculateWordValue('ESCOLA') * 2, calculateWordValue('LIVRO') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "C" é o valor da palavra "AMOR" multiplicado por 4, qual o valor de C?',
+                        answer: calculateWordValue('AMOR') * 4,
+                        options: shuffleArray([calculateWordValue('AMOR') * 4, calculateWordValue('AMOR') + 4, calculateWordValue('AMOR') / 4, calculateWordValue('AMOR') - 4])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "FAMÍLIA" menos o valor de "CASA"?',
+                        answer: calculateWordValue('FAMÍLIA') - calculateWordValue('CASA'),
+                        options: shuffleArray([calculateWordValue('FAMÍLIA') - calculateWordValue('CASA'), calculateWordValue('FAMÍLIA') + calculateWordValue('CASA'), calculateWordValue('FAMÍLIA') * 2, calculateWordValue('CASA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é (o valor de "FELIZ" + o valor de "ALEGRE") dividido por 5?',
+                        answer: (calculateWordValue('FELIZ') + calculateWordValue('ALEGRE')) / 5,
+                        options: shuffleArray([(calculateWordValue('FELIZ') + calculateWordValue('ALEGRE')) / 5, calculateWordValue('FELIZ') + calculateWordValue('ALEGRE'), calculateWordValue('FELIZ') * 2, calculateWordValue('ALEGRE') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "FELICIDADE" dividido por 2?',
+                        answer: calculateWordValue('FELICIDADE') / 2,
+                        options: shuffleArray([calculateWordValue('FELICIDADE') / 2, calculateWordValue('FELICIDADE') * 2, calculateWordValue('FELICIDADE') - 2, calculateWordValue('FELICIDADE') + 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "D" é o valor da palavra "SAÚDE" mais 9, qual o valor de D?',
+                        answer: calculateWordValue('SAÚDE') + 9,
+                        options: shuffleArray([calculateWordValue('SAÚDE') + 9, calculateWordValue('SAÚDE') - 9, calculateWordValue('SAÚDE') * 2, calculateWordValue('SAÚDE') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "SAÚDE" mais o valor de "BEM"?',
+                        answer: calculateWordValue('SAÚDE') + calculateWordValue('BEM'),
+                        options: shuffleArray([calculateWordValue('SAÚDE') + calculateWordValue('BEM'), calculateWordValue('SAÚDE'), calculateWordValue('BEM'), calculateWordValue('SAÚDE') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é (o valor de "VERÃO" menos o valor de "CHUVA") dividido por 4?',
+                        answer: (calculateWordValue('VERÃO') - calculateWordValue('CHUVA')) / 4,
+                        options: shuffleArray([(calculateWordValue('VERÃO') - calculateWordValue('CHUVA')) / 4, calculateWordValue('VERÃO') - calculateWordValue('CHUVA'), calculateWordValue('VERÃO') * 2, calculateWordValue('CHUVA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "VERÃO" menos o valor de "INVERNO"?',
+                        answer: calculateWordValue('VERÃO') - calculateWordValue('INVERNO'),
+                        options: shuffleArray([calculateWordValue('VERÃO') - calculateWordValue('INVERNO'), calculateWordValue('VERÃO') + calculateWordValue('INVERNO'), calculateWordValue('VERÃO') * 2, calculateWordValue('INVERNO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "E" é o valor da palavra "MÚSICA" multiplicado por 5, qual o valor de E?',
+                        answer: calculateWordValue('MÚSICA') * 5,
+                        options: shuffleArray([calculateWordValue('MÚSICA') * 5, calculateWordValue('MÚSICA') + 5, calculateWordValue('MÚSICA') / 5, calculateWordValue('MÚSICA') - 5])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "MÚSICA" mais o valor de "ARTE"?',
+                        answer: calculateWordValue('MÚSICA') + calculateWordValue('ARTE'),
+                        options: shuffleArray([calculateWordValue('MÚSICA') + calculateWordValue('ARTE'), calculateWordValue('MÚSICA'), calculateWordValue('ARTE'), calculateWordValue('MÚSICA') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é (o valor de "ESTUDO" + o valor de "APRENDER") dividido por 6?',
+                        answer: (calculateWordValue('ESTUDO') + calculateWordValue('APRENDER')) / 6,
+                        options: shuffleArray([(calculateWordValue('ESTUDO') + calculateWordValue('APRENDER')) / 6, calculateWordValue('ESTUDO') + calculateWordValue('APRENDER'), calculateWordValue('ESTUDO') * 2, calculateWordValue('APRENDER') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "ESTUDO" dividido por 4?',
+                        answer: calculateWordValue('ESTUDO') / 4,
+                        options: shuffleArray([calculateWordValue('ESTUDO') / 4, calculateWordValue('ESTUDO') * 4, calculateWordValue('ESTUDO') - 4, calculateWordValue('ESTUDO') + 4])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "F" é o valor da palavra "FÉRIAS" menos 10, qual o valor de F?',
+                        answer: calculateWordValue('FÉRIAS') - 10,
+                        options: shuffleArray([calculateWordValue('FÉRIAS') - 10, calculateWordValue('FÉRIAS') + 10, calculateWordValue('FÉRIAS') * 2, calculateWordValue('FÉRIAS') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "FÉRIAS" mais o valor de "PRAIA"?',
+                        answer: calculateWordValue('FÉRIAS') + calculateWordValue('PRAIA'),
+                        options: shuffleArray([calculateWordValue('FÉRIAS') + calculateWordValue('PRAIA'), calculateWordValue('FÉRIAS'), calculateWordValue('PRAIA'), calculateWordValue('FÉRIAS') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é (o valor de "CÉU" menos o valor de "NUVEM") dividido por 5?',
+                        answer: (calculateWordValue('CÉU') - calculateWordValue('NUVEM')) / 5,
+                        options: shuffleArray([(calculateWordValue('CÉU') - calculateWordValue('NUVEM')) / 5, calculateWordValue('CÉU') - calculateWordValue('NUVEM'), calculateWordValue('CÉU') * 2, calculateWordValue('NUVEM') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "CÉU" multiplicado por 3?',
+                        answer: calculateWordValue('CÉU') * 3,
+                        options: shuffleArray([calculateWordValue('CÉU') * 3, calculateWordValue('CÉU') + 3, calculateWordValue('CÉU') - 3, calculateWordValue('CÉU') / 3])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "G" é o valor da palavra "VIAGEM" mais 15, qual o valor de G?',
+                        answer: calculateWordValue('VIAGEM') + 15,
+                        options: shuffleArray([calculateWordValue('VIAGEM') + 15, calculateWordValue('VIAGEM') - 15, calculateWordValue('VIAGEM') * 2, calculateWordValue('VIAGEM') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "VIAGEM" menos o valor de "MAPA"?',
+                        answer: calculateWordValue('VIAGEM') - calculateWordValue('MAPA'),
+                        options: shuffleArray([calculateWordValue('VIAGEM') - calculateWordValue('MAPA'), calculateWordValue('VIAGEM') + calculateWordValue('MAPA'), calculateWordValue('VIAGEM') * 2, calculateWordValue('MAPA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Quanto é (o valor de "AVENTURA" menos o valor de "MEDO") dividido por 5?',
+                        answer: (calculateWordValue('AVENTURA') - calculateWordValue('MEDO')) / 5,
+                        options: shuffleArray([(calculateWordValue('AVENTURA') - calculateWordValue('MEDO')) / 5, calculateWordValue('AVENTURA') - calculateWordValue('MEDO'), calculateWordValue('AVENTURA') * 2, calculateWordValue('MEDO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "AVENTURA" dividido por 2?',
+                        answer: calculateWordValue('AVENTURA') / 2,
+                        options: shuffleArray([calculateWordValue('AVENTURA') / 2, calculateWordValue('AVENTURA') * 2, calculateWordValue('AVENTURA') - 2, calculateWordValue('AVENTURA') + 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "H" é o valor da palavra "FESTA" multiplicado por 6, qual o valor de H?',
+                        answer: calculateWordValue('FESTA') * 6,
+                        options: shuffleArray([calculateWordValue('FESTA') * 6, calculateWordValue('FESTA') + 6, calculateWordValue('FESTA') / 6, calculateWordValue('FESTA') - 6])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "FESTA" mais o valor de "ALEGRIA"?',
+                        answer: calculateWordValue('FESTA') + calculateWordValue('ALEGRIA'),
+                        options: shuffleArray([calculateWordValue('FESTA') + calculateWordValue('ALEGRIA'), calculateWordValue('FESTA'), calculateWordValue('ALEGRIA'), calculateWordValue('FESTA') * 2])
+                    },
+                ],
+                '8º 01': [
+                    {
+                        type: 'math_word',
+                        question: 'Se "COMPUTADOR" vale ' + calculateWordValue('COMPUTADOR') + ' e "TECLADO" vale ' + calculateWordValue('TECLADO') + ', qual a diferença entre o valor de "COMPUTADOR" e o dobro do valor de "TECLADO"?',
+                        answer: calculateWordValue('COMPUTADOR') - (calculateWordValue('TECLADO') * 2),
+                        options: shuffleArray([calculateWordValue('COMPUTADOR') - (calculateWordValue('TECLADO') * 2), calculateWordValue('COMPUTADOR') + calculateWordValue('TECLADO'), calculateWordValue('COMPUTADOR') * 2, calculateWordValue('TECLADO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: (valor de "CONHECIMENTO" + valor de "LIVRO") * 3 - valor de "ESCOLA"',
+                        answer: (calculateWordValue('CONHECIMENTO') + calculateWordValue('LIVRO')) * 3 - calculateWordValue('ESCOLA'),
+                        options: shuffleArray([(calculateWordValue('CONHECIMENTO') + calculateWordValue('LIVRO')) * 3 - calculateWordValue('ESCOLA'), calculateWordValue('CONHECIMENTO') + calculateWordValue('LIVRO'), calculateWordValue('ESCOLA'), calculateWordValue('LIVRO') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "MATEMÁTICA" somado ao valor de "LITERATURA", e o resultado dividido por 2?',
+                        answer: (calculateWordValue('MATEMATICA') + calculateWordValue('LITERATURA')) / 2,
+                        options: shuffleArray([(calculateWordValue('MATEMATICA') + calculateWordValue('LITERATURA')) / 2, calculateWordValue('MATEMATICA') + calculateWordValue('LITERATURA'), calculateWordValue('MATEMATICA') * 2, calculateWordValue('LITERATURA') - 10])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se 3 vezes o valor de "ESTUDO" menos 7 é 14, qual o valor de "ESTUDO"?',
+                        answer: (14 + 7) / 3, // 3x = 21, x = 7
+                        options: shuffleArray([(14 + 7) / 3, (14 - 7) / 3, (14 + 7) * 3, (14 - 7) * 3])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o dobro do valor de "CONHECIMENTO" menos o valor de "SABEDORIA"?',
+                        answer: (calculateWordValue('CONHECIMENTO') * 2) - calculateWordValue('SABEDORIA'),
+                        options: shuffleArray([(calculateWordValue('CONHECIMENTO') * 2) - calculateWordValue('SABEDORIA'), calculateWordValue('CONHECIMENTO') + calculateWordValue('SABEDORIA'), calculateWordValue('CONHECIMENTO') * 3, calculateWordValue('SABEDORIA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Resolva: (o valor de "CASA" elevado ao quadrado menos 4) dividido por 5',
+                        answer: (calculateWordValue('CASA') * calculateWordValue('CASA') - 4) / 5,
+                        options: shuffleArray([(calculateWordValue('CASA') * calculateWordValue('CASA') - 4) / 5, (calculateWordValue('CASA') * calculateWordValue('CASA') + 4) / 5, calculateWordValue('CASA') * 2, calculateWordValue('CASA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se "COMPREENSÃO" vale ' + calculateWordValue('COMPREENSÃO') + ' e "ENTENDIMENTO" vale ' + calculateWordValue('ENTENDIMENTO') + ', qual o produto dos dois valores dividido por 10?',
+                        answer: (calculateWordValue('COMPREENSÃO') * calculateWordValue('ENTENDIMENTO')) / 10,
+                        options: shuffleArray([(calculateWordValue('COMPREENSÃO') * calculateWordValue('ENTENDIMENTO')) / 10, calculateWordValue('COMPREENSÃO') + calculateWordValue('ENTENDIMENTO'), calculateWordValue('COMPREENSÃO') * 2, calculateWordValue('ENTENDIMENTO') / 5])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: (raiz quadrada do valor de "PAZ" + valor de "SOL" elevado ao quadrado) * 2 - 15',
+                        answer: (Math.sqrt(calculateWordValue('PAZ')) + (calculateWordValue('SOL') * calculateWordValue('SOL'))) * 2 - 15,
+                        options: shuffleArray([(Math.sqrt(calculateWordValue('PAZ')) + (calculateWordValue('SOL') * calculateWordValue('SOL'))) * 2 - 15, (calculateWordValue('PAZ') + calculateWordValue('SOL')) * 2 - 15, calculateWordValue('PAZ') * 2, calculateWordValue('SOL') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "DIFICULDADE" menos a metade do valor de "DESAFIO"?',
+                        answer: calculateWordValue('DIFICULDADE') - (calculateWordValue('DESAFIO') / 2),
+                        options: shuffleArray([calculateWordValue('DIFICULDADE') - (calculateWordValue('DESAFIO') / 2), calculateWordValue('DIFICULDADE') + calculateWordValue('DESAFIO'), calculateWordValue('DIFICULDADE') * 2, calculateWordValue('DESAFIO') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se 5 vezes (o valor de "AMOR" menos 2) é 30, qual o valor de "AMOR"?',
+                        answer: (30 / 5) + 2, // 5x - 10 = 30 => 5x = 40 => x = 8
+                        options: shuffleArray([(30 / 5) + 2, (30 / 5) - 2, 30 * 5, 30 / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o quádruplo do valor de "APRENDIZAGEM" dividido por 8?',
+                        answer: (calculateWordValue('APRENDIZAGEM') * 4) / 8,
+                        options: shuffleArray([(calculateWordValue('APRENDIZAGEM') * 4) / 8, calculateWordValue('APRENDIZAGEM') * 2, calculateWordValue('APRENDIZAGEM') / 2, calculateWordValue('APRENDIZAGEM') + 10])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Resolva: (o valor de "FELIZ" elevado ao quadrado menos 1) dividido pela raiz quadrada de "CASA"',
+                        answer: (calculateWordValue('FELIZ') * calculateWordValue('FELIZ') - 1) / Math.sqrt(calculateWordValue('CASA')),
+                        options: shuffleArray([(calculateWordValue('FELIZ') * calculateWordValue('FELIZ') - 1) / Math.sqrt(calculateWordValue('CASA')), calculateWordValue('FELIZ') * calculateWordValue('FELIZ'), Math.sqrt(calculateWordValue('CASA')), calculateWordValue('FELIZ') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "CONHECIMENTO" mais o valor de "SABEDORIA", e o resultado multiplicado por 0.5?',
+                        answer: (calculateWordValue('CONHECIMENTO') + calculateWordValue('SABEDORIA')) * 0.5,
+                        options: shuffleArray([(calculateWordValue('CONHECIMENTO') + calculateWordValue('SABEDORIA')) * 0.5, calculateWordValue('CONHECIMENTO') + calculateWordValue('SABEDORIA'), calculateWordValue('CONHECIMENTO') * 2, calculateWordValue('SABEDORIA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se (o valor de "AMIGO" + 10) dividido por 2 é 15, qual o valor de "AMIGO"?',
+                        answer: (15 * 2) - 10, // x + 10 = 30 => x = 20
+                        options: shuffleArray([(15 * 2) - 10, (15 * 2) + 10, 15 / 2, 15 * 10])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o triplo do valor de "ESTUDO" menos o valor de "PROVA"?',
+                        answer: (calculateWordValue('ESTUDO') * 3) - calculateWordValue('PROVA'),
+                        options: shuffleArray([(calculateWordValue('ESTUDO') * 3) - calculateWordValue('PROVA'), calculateWordValue('ESTUDO') + calculateWordValue('PROVA'), calculateWordValue('ESTUDO') / 3, calculateWordValue('PROVA') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: ((o valor de "CASA" elevado ao quadrado + o valor de "SOL" elevado ao cubo) dividido por 2) - 5',
+                        answer: ((calculateWordValue('CASA') * calculateWordValue('CASA') + calculateWordValue('SOL') * calculateWordValue('SOL') * calculateWordValue('SOL')) / 2) - 5,
+                        options: shuffleArray([((calculateWordValue('CASA') * calculateWordValue('CASA') + calculateWordValue('SOL') * calculateWordValue('SOL') * calculateWordValue('SOL')) / 2) - 5, (calculateWordValue('CASA') + calculateWordValue('SOL')) / 2, calculateWordValue('CASA') * 2, calculateWordValue('SOL') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "CONFIANÇA" dividido pela metade do valor de "FÉ"?',
+                        answer: calculateWordValue('CONFIANÇA') / (calculateWordValue('FÉ') / 2),
+                        options: shuffleArray([calculateWordValue('CONFIANÇA') / (calculateWordValue('FÉ') / 2), calculateWordValue('CONFIANÇA') * calculateWordValue('FÉ'), calculateWordValue('CONFIANÇA') + calculateWordValue('FÉ'), calculateWordValue('FÉ') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se (o valor de "FELIZ" menos 5) multiplicado por 3 é 27, qual o valor de "FELIZ"?',
+                        answer: (27 / 3) + 5, // Y - 5 = 9 => Y = 14
+                        options: shuffleArray([(27 / 3) + 5, (27 / 3) - 5, 27 * 3, 27 / 5])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual a soma do valor de "SUCESSO" com o valor de "ESFORÇO", e o resultado multiplicado por 1.5?',
+                        answer: (calculateWordValue('SUCESSO') + calculateWordValue('ESFORÇO')) * 1.5,
+                        options: shuffleArray([(calculateWordValue('SUCESSO') + calculateWordValue('ESFORÇO')) * 1.5, calculateWordValue('SUCESSO') + calculateWordValue('ESFORÇO'), calculateWordValue('SUCESSO') * 2, calculateWordValue('ESFORÇO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: ((raiz quadrada do valor de "ESCOLA" * 3) dividido por 2) + 10',
+                        answer: ((Math.sqrt(calculateWordValue('ESCOLA')) * 3) / 2) + 10,
+                        options: shuffleArray([((Math.sqrt(calculateWordValue('ESCOLA')) * 3) / 2) + 10, (calculateWordValue('ESCOLA') * 3) / 2, calculateWordValue('ESCOLA') + 10, calculateWordValue('ESCOLA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "CONCENTRAÇÃO" menos o valor de "DISTRAÇÃO"?',
+                        answer: calculateWordValue('CONCENTRAÇÃO') - calculateWordValue('DISTRAÇÃO'),
+                        options: shuffleArray([calculateWordValue('CONCENTRAÇÃO') - calculateWordValue('DISTRAÇÃO'), calculateWordValue('CONCENTRAÇÃO') + calculateWordValue('DISTRAÇÃO'), calculateWordValue('CONCENTRAÇÃO') * 2, calculateWordValue('DISTRAÇÃO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se (o valor de "ALEGRIA" + 7) multiplicado por 4 é 48, qual o valor de "ALEGRIA"?',
+                        answer: (48 / 4) - 7, // Z + 7 = 12 => Z = 5
+                        options: shuffleArray([(48 / 4) - 7, (48 / 4) + 7, 48 * 4, 48 / 7])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "CRIATIVIDADE" mais o valor de "INSPIRAÇÃO", e o resultado dividido por 3?',
+                        answer: (calculateWordValue('CRIATIVIDADE') + calculateWordValue('INSPIRAÇÃO')) / 3,
+                        options: shuffleArray([(calculateWordValue('CRIATIVIDADE') + calculateWordValue('INSPIRAÇÃO')) / 3, calculateWordValue('CRIATIVIDADE') + calculateWordValue('INSPIRAÇÃO'), calculateWordValue('CRIATIVIDADE') * 2, calculateWordValue('INSPIRAÇÃO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: ((o valor de "AMOR" elevado ao quadrado menos 1) dividido por 2) + raiz quadrada de "PAZ"',
+                        answer: ((calculateWordValue('AMOR') * calculateWordValue('AMOR') - 1) / 2) + Math.sqrt(calculateWordValue('PAZ')),
+                        options: shuffleArray([((calculateWordValue('AMOR') * calculateWordValue('AMOR') - 1) / 2) + Math.sqrt(calculateWordValue('PAZ')), (calculateWordValue('AMOR') + calculateWordValue('PAZ')) / 2, calculateWordValue('AMOR') * 2, calculateWordValue('PAZ') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "COMUNICAÇÃO" menos o valor de "SILÊNCIO"?',
+                        answer: calculateWordValue('COMUNICAÇÃO') - calculateWordValue('SILÊNCIO'),
+                        options: shuffleArray([calculateWordValue('COMUNICAÇÃO') - calculateWordValue('SILÊNCIO'), calculateWordValue('COMUNICAÇÃO') + calculateWordValue('SILÊNCIO'), calculateWordValue('COMUNICAÇÃO') * 2, calculateWordValue('SILÊNCIO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se (o valor de "CÉU" multiplicado por 2) mais 5 é 25, qual o valor de "CÉU"?',
+                        answer: (25 - 5) / 2, // 2X = 20 => X = 10
+                        options: shuffleArray([(25 - 5) / 2, (25 + 5) / 2, 25 * 2, 25 - 5])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o dobro do valor de "PERSISTÊNCIA" dividido por 4?',
+                        answer: (calculateWordValue('PERSISTÊNCIA') * 2) / 4,
+                        options: shuffleArray([(calculateWordValue('PERSISTÊNCIA') * 2) / 4, calculateWordValue('PERSISTÊNCIA') * 2, calculateWordValue('PERSISTÊNCIA') / 2, calculateWordValue('PERSISTÊNCIA') + 10])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: (o valor de "MUNDO" elevado ao quadrado dividido por 5) menos a raiz quadrada do valor de "SOL"',
+                        answer: (calculateWordValue('MUNDO') * calculateWordValue('MUNDO') / 5) - Math.sqrt(calculateWordValue('SOL')),
+                        options: shuffleArray([(calculateWordValue('MUNDO') * calculateWordValue('MUNDO') / 5) - Math.sqrt(calculateWordValue('SOL')), calculateWordValue('MUNDO') / 5, Math.sqrt(calculateWordValue('SOL')), calculateWordValue('MUNDO') + calculateWordValue('SOL')])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "APRENDIZADO" mais o valor de "CONHECIMENTO", e o resultado menos 5?',
+                        answer: (calculateWordValue('APRENDIZADO') + calculateWordValue('CONHECIMENTO')) - 5,
+                        options: shuffleArray([(calculateWordValue('APRENDIZADO') + calculateWordValue('CONHECIMENTO')) - 5, calculateWordValue('APRENDIZADO') + calculateWordValue('CONHECIMENTO'), calculateWordValue('APRENDIZADO') * 2, calculateWordValue('CONHECIMENTO') / 2])
+                    },
+                ],
+                '8º 02': [
+                    {
+                        type: 'math_word',
+                        question: 'Se "UNIVERSO" vale ' + calculateWordValue('UNIVERSO') + ' e "ESTRELA" vale ' + calculateWordValue('ESTRELA') + ', qual a soma do valor de "UNIVERSO" com o triplo do valor de "ESTRELA"?',
+                        answer: calculateWordValue('UNIVERSO') + (calculateWordValue('ESTRELA') * 3),
+                        options: shuffleArray([calculateWordValue('UNIVERSO') + (calculateWordValue('ESTRELA') * 3), calculateWordValue('UNIVERSO') + calculateWordValue('ESTRELA'), calculateWordValue('UNIVERSO') * 3, calculateWordValue('ESTRELA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: (raiz quadrada do valor de "MUNDO" + 5) * 2 - 10',
+                        answer: (Math.sqrt(calculateWordValue('MUNDO')) + 5) * 2 - 10,
+                        options: shuffleArray([(Math.sqrt(calculateWordValue('MUNDO')) + 5) * 2 - 10, (calculateWordValue('MUNDO') + 5) * 2 - 10, calculateWordValue('MUNDO') * 2, calculateWordValue('MUNDO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "IMAGINAÇÃO" menos o valor de "CRIATIVIDADE"?',
+                        answer: calculateWordValue('IMAGINACAO') - calculateWordValue('CRIATIVIDADE'),
+                        options: shuffleArray([calculateWordValue('IMAGINACAO') - calculateWordValue('CRIATIVIDADE'), calculateWordValue('IMAGINACAO') + calculateWordValue('CRIATIVIDADE'), calculateWordValue('IMAGINACAO') * 2, calculateWordValue('CRIATIVIDADE') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se 2 vezes (o valor de "PAZ" + 4) é 18, qual o valor de "PAZ"?',
+                        answer: (18 / 2) - 4, // 2x + 8 = 18 => 2x = 10 => x = 5
+                        options: shuffleArray([(18 / 2) - 4, (18 / 2) + 4, 18 * 2, 18 / 4])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "CONSTRUÇÃO" dividido pelo valor de "OBRA"?',
+                        answer: calculateWordValue('CONSTRUCAO') / calculateWordValue('OBRA'),
+                        options: shuffleArray([calculateWordValue('CONSTRUCAO') / calculateWordValue('OBRA'), calculateWordValue('CONSTRUCAO') * calculateWordValue('OBRA'), calculateWordValue('CONSTRUCAO') + calculateWordValue('OBRA'), calculateWordValue('OBRA') - 5])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Resolva: (o valor de "CASA" * o valor de "CASA") dividido por (2 + 1)',
+                        answer: (calculateWordValue('CASA') * calculateWordValue('CASA')) / (2 + 1),
+                        options: shuffleArray([(calculateWordValue('CASA') * calculateWordValue('CASA')) / (2 + 1), calculateWordValue('CASA') * 2, calculateWordValue('CASA') / 2, calculateWordValue('CASA') + 1])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "CONHECIMENTO" somado ao valor de "SABEDORIA", e o resultado dividido por 2?',
+                        answer: (calculateWordValue('CONHECIMENTO') + calculateWordValue('SABEDORIA')) / 2,
+                        options: shuffleArray([(calculateWordValue('CONHECIMENTO') + calculateWordValue('SABEDORIA')) / 2, calculateWordValue('CONHECIMENTO') + calculateWordValue('SABEDORIA'), calculateWordValue('CONHECIMENTO') * 2, calculateWordValue('SABEDORIA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: (o valor de "MUNDO" elevado ao quadrado menos 20) dividido pela raiz quadrada do valor de "MUNDO"',
+                        answer: (calculateWordValue('MUNDO') * calculateWordValue('MUNDO') - 20) / Math.sqrt(calculateWordValue('MUNDO')),
+                        options: shuffleArray([(calculateWordValue('MUNDO') * calculateWordValue('MUNDO') - 20) / Math.sqrt(calculateWordValue('MUNDO')), calculateWordValue('MUNDO') * 2, calculateWordValue('MUNDO') / 2, calculateWordValue('MUNDO') + 20])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "PERSISTÊNCIA" menos o valor de "DESISTÊNCIA"?',
+                        answer: calculateWordValue('PERSISTÊNCIA') - calculateWordValue('DESISTÊNCIA'),
+                        options: shuffleArray([calculateWordValue('PERSISTÊNCIA') - calculateWordValue('DESISTÊNCIA'), calculateWordValue('PERSISTÊNCIA') + calculateWordValue('DESISTÊNCIA'), calculateWordValue('PERSISTÊNCIA') * 2, calculateWordValue('DESISTÊNCIA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se 4 vezes (o valor de "AMOR" + 1) é 28, qual o valor de "AMOR"?',
+                        answer: (28 / 4) - 1, // 4x + 4 = 28 => 4x = 24 => x = 6
+                        options: shuffleArray([(28 / 4) - 1, (28 / 4) + 1, 28 * 4, 28 / 1])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o triplo do valor de "CRIATIVIDADE" somado ao valor de "INOVAÇÃO"?',
+                        answer: (calculateWordValue('CRIATIVIDADE') * 3) + calculateWordValue('INOVAÇÃO'),
+                        options: shuffleArray([(calculateWordValue('CRIATIVIDADE') * 3) + calculateWordValue('INOVAÇÃO'), calculateWordValue('CRIATIVIDADE') + calculateWordValue('INOVAÇÃO'), calculateWordValue('CRIATIVIDADE') * 2, calculateWordValue('INOVAÇÃO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Resolva: ((o valor de "SOL" elevado ao quadrado menos 1) dividido por 4) + raiz quadrada do valor de "CASA"',
+                        answer: ((calculateWordValue('SOL') * calculateWordValue('SOL') - 1) / 4) + Math.sqrt(calculateWordValue('CASA')),
+                        options: shuffleArray([((calculateWordValue('SOL') * calculateWordValue('SOL') - 1) / 4) + Math.sqrt(calculateWordValue('CASA')), (calculateWordValue('SOL') + calculateWordValue('CASA')) / 4, calculateWordValue('SOL') * 2, calculateWordValue('CASA') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "ORGANIZAÇÃO" dividido por 2, mais o valor de "PLANEJAMENTO"?',
+                        answer: (calculateWordValue('ORGANIZAÇÃO') / 2) + calculateWordValue('PLANEJAMENTO'),
+                        options: shuffleArray([(calculateWordValue('ORGANIZAÇÃO') / 2) + calculateWordValue('PLANEJAMENTO'), calculateWordValue('ORGANIZAÇÃO') + calculateWordValue('PLANEJAMENTO'), calculateWordValue('ORGANIZAÇÃO') * 2, calculateWordValue('PLANEJAMENTO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se (o valor de "LIVRO" menos 8) dividido por 3 é 4, qual o valor de "LIVRO"?',
+                        answer: (4 * 3) + 8, // x - 8 = 12 => x = 20
+                        options: shuffleArray([(4 * 3) + 8, (4 * 3) - 8, 4 / 3, 4 * 8])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o dobro do valor de "RESPONSABILIDADE" menos a metade do valor de "COMPROMISSO"?',
+                        answer: (calculateWordValue('RESPONSABILIDADE') * 2) - (calculateWordValue('COMPROMISSO') / 2),
+                        options: shuffleArray([(calculateWordValue('RESPONSABILIDADE') * 2) - (calculateWordValue('COMPROMISSO') / 2), calculateWordValue('RESPONSABILIDADE') + calculateWordValue('COMPROMISSO'), calculateWordValue('RESPONSABILIDADE') * 3, calculateWordValue('COMPROMISSO') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: ((o valor de "FELIZ" elevado ao quadrado + 1) dividido por 5) - raiz quadrada do valor de "PAZ"',
+                        answer: ((calculateWordValue('FELIZ') * calculateWordValue('FELIZ') + 1) / 5) - Math.sqrt(calculateWordValue('PAZ')),
+                        options: shuffleArray([((calculateWordValue('FELIZ') * calculateWordValue('FELIZ') + 1) / 5) - Math.sqrt(calculateWordValue('PAZ')), (calculateWordValue('FELIZ') + calculateWordValue('PAZ')) / 5, calculateWordValue('FELIZ') * 2, calculateWordValue('PAZ') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "PERSEVERANÇA" mais o valor de "DETERMINAÇÃO", e o resultado dividido por 4?',
+                        answer: (calculateWordValue('PERSEVERANÇA') + calculateWordValue('DETERMINAÇÃO')) / 4,
+                        options: shuffleArray([(calculateWordValue('PERSEVERANÇA') + calculateWordValue('DETERMINAÇÃO')) / 4, calculateWordValue('PERSEVERANÇA') + calculateWordValue('DETERMINAÇÃO'), calculateWordValue('PERSEVERANÇA') * 2, calculateWordValue('DETERMINAÇÃO') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Se (o valor de "AMIZADE" + 12) multiplicado por 2 é 50, qual o valor de "AMIZADE"?',
+                        answer: (50 / 2) - 12, // Y + 12 = 25 => Y = 13
+                        options: shuffleArray([(50 / 2) - 12, (50 / 2) + 12, 50 * 2, 50 / 12])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor de "COLABORAÇÃO" menos o valor de "CONCORRÊNCIA"?',
+                        answer: calculateWordValue('COLABORAÇÃO') - calculateWordValue('CONCORRÊNCIA'),
+                        options: shuffleArray([calculateWordValue('COLABORAÇÃO') - calculateWordValue('CONCORRÊNCIA'), calculateWordValue('COLABORAÇÃO') + calculateWordValue('CONCORRÊNCIA'), calculateWordValue('COLABORAÇÃO') * 2, calculateWordValue('CONCORRÊNCIA') / 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Calcule: ((o valor de "ESCOLA" elevado ao quadrado menos 4) dividido por 10) + raiz quadrada do valor de "ARVORE"',
+                        answer: ((calculateWordValue('ESCOLA') * calculateWordValue('ESCOLA') - 4) / 10) + Math.sqrt(calculateWordValue('ARVORE')),
+                        options: shuffleArray([((calculateWordValue('ESCOLA') * calculateWordValue('ESCOLA') - 4) / 10) + Math.sqrt(calculateWordValue('ARVORE')), (calculateWordValue('ESCOLA') + calculateWordValue('ARVORE')) / 10, calculateWordValue('ESCOLA') * 2, calculateWordValue('ARVORE') * 2])
+                    },
+                    {
+                        type: 'math_word',
+                        question: 'Qual o valor numérico da palavra "COMPROMETIMENTO" mais o valor de "DEDICAÇÃO", e o resultado dividido por 5?',
+                        answer: (calculateWordValue('COMPROMETIMENTO') + calculateWordValue('DEDICAÇÃO')) / 5,
+                        options: shuffleArray([(calculateWordValue('COMPROMETIMENTO') + calculateWordValue('DEDICAÇÃO')) / 5, calculateWordValue('COMPROMETIMENTO') + calculateWordValue('DEDICAÇÃO'), calculateWordValue('COMPROMETIMENTO') * 2, calculateWordValue('DEDICAÇÃO') / 2])
+                    },
+                ],
+                'AEE': [
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor da palavra "PAZ"?',
+                        answer: calculateWordValue('PAZ'),
+                        options: shuffleArray([calculateWordValue('PAZ'), calculateWordValue('LUZ'), calculateWordValue('AMOR'), calculateWordValue('BEM')])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual o próximo número na sequência: 2, 4, 6, 8, ...?',
+                        answer: 10,
+                        options: shuffleArray([10, 9, 11, 12])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Se "FELIZ" vale ' + calculateWordValue('FELIZ') + ', e "ALEGRE" vale ' + calculateWordValue('ALEGRE') + ', qual o maior valor?',
+                        answer: Math.max(calculateWordValue('FELIZ'), calculateWordValue('ALEGRE')),
+                        options: shuffleArray([Math.max(calculateWordValue('FELIZ'), calculateWordValue('ALEGRE')), Math.min(calculateWordValue('FELIZ'), calculateWordValue('ALEGRE')), calculateWordValue('FELIZ') + calculateWordValue('ALEGRE'), calculateWordValue('FELIZ') - calculateWordValue('ALEGRE')])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Tenho 4 maçãs e como 2. Quantas maçãs sobraram?',
+                        answer: 2,
+                        options: shuffleArray([2, 3, 1, 4])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual a próxima letra na sequência: A, C, E, G, ...?',
+                        answer: 'I',
+                        options: shuffleArray(['H', 'I', 'J', 'K'])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor de "AMOR" + "PAZ"?',
+                        answer: calculateWordValue('AMOR') + calculateWordValue('PAZ'),
+                        options: shuffleArray([calculateWordValue('AMOR') + calculateWordValue('PAZ'), calculateWordValue('AMOR'), calculateWordValue('PAZ'), calculateWordValue('AMOR') - calculateWordValue('PAZ')])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Se hoje é terça-feira, que dia será amanhã?',
+                        answer: 'Quarta-feira',
+                        options: shuffleArray(['Segunda-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira'])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor da palavra "LUZ"?',
+                        answer: calculateWordValue('LUZ'),
+                        options: shuffleArray([calculateWordValue('LUZ'), calculateWordValue('DIA'), calculateWordValue('NOITE'), calculateWordValue('BRILHO')])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual o próximo número na sequência: 1, 3, 5, 7, ...?',
+                        answer: 9,
+                        options: shuffleArray([9, 8, 10, 11])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Se "SOL" vale ' + calculateWordValue('SOL') + ', e "CÉU" vale ' + calculateWordValue('CÉU') + ', qual o menor valor?',
+                        answer: Math.min(calculateWordValue('SOL'), calculateWordValue('CÉU')),
+                        options: shuffleArray([Math.min(calculateWordValue('SOL'), calculateWordValue('CÉU')), Math.max(calculateWordValue('SOL'), calculateWordValue('CÉU')), calculateWordValue('SOL') + calculateWordValue('CÉU'), calculateWordValue('SOL') - calculateWordValue('CÉU')])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Tenho 3 lápis e ganho mais 1. Quantos lápis tenho agora?',
+                        answer: 4,
+                        options: shuffleArray([4, 3, 2, 5])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual a próxima letra na sequência: Z, X, V, T, ...?',
+                        answer: 'R',
+                        options: shuffleArray(['S', 'R', 'Q', 'P'])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor de "BEM" + "PAZ"?',
+                        answer: calculateWordValue('BEM') + calculateWordValue('PAZ'),
+                        options: shuffleArray([calculateWordValue('BEM') + calculateWordValue('PAZ'), calculateWordValue('BEM'), calculateWordValue('PAZ'), calculateWordValue('BEM') - calculateWordValue('PAZ')])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Se o café da manhã é a primeira refeição, qual a última refeição do dia?',
+                        answer: 'Jantar',
+                        options: shuffleArray(['Almoço', 'Lanche', 'Jantar', 'Ceia'])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor da palavra "FELICIDADE" menos o valor de "TRISTEZA"?',
+                        answer: calculateWordValue('FELICIDADE') - calculateWordValue('TRISTEZA'),
+                        options: shuffleArray([calculateWordValue('FELICIDADE') - calculateWordValue('TRISTEZA'), calculateWordValue('FELICIDADE') + calculateWordValue('TRISTEZA'), calculateWordValue('FELICIDADE') * 2, calculateWordValue('TRISTEZA') / 2])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual o próximo número na sequência: 10, 20, 30, 40, ...?',
+                        answer: 50,
+                        options: shuffleArray([50, 45, 55, 60])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Se "AMOR" vale ' + calculateWordValue('AMOR') + ', e "CARINHO" vale ' + calculateWordValue('CARINHO') + ', qual o valor de "CARINHO" menos "AMOR"?',
+                        answer: calculateWordValue('CARINHO') - calculateWordValue('AMOR'),
+                        options: shuffleArray([calculateWordValue('CARINHO') - calculateWordValue('AMOR'), calculateWordValue('CARINHO') + calculateWordValue('AMOR'), calculateWordValue('CARINHO') * 2, calculateWordValue('AMOR') / 2])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Um pássaro tem 2 asas. Quantas asas 3 pássaros têm no total?',
+                        answer: 6,
+                        options: shuffleArray([6, 5, 4, 7])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual a próxima forma na sequência: círculo, quadrado, círculo, quadrado, ...?',
+                        answer: 'Círculo',
+                        options: shuffleArray(['Triângulo', 'Retângulo', 'Círculo', 'Quadrado'])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor de "FAMÍLIA" dividido por 2?',
+                        answer: calculateWordValue('FAMÍLIA') / 2,
+                        options: shuffleArray([calculateWordValue('FAMÍLIA') / 2, calculateWordValue('FAMÍLIA') * 2, calculateWordValue('FAMÍLIA') - 2, calculateWordValue('FAMÍLIA') + 2])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Se um ano tem 12 meses, quantos meses têm 2 anos?',
+                        answer: 24,
+                        options: shuffleArray([24, 12, 14, 20])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor da palavra "AMIZADE" mais o valor de "UNIÃO"?',
+                        answer: calculateWordValue('AMIZADE') + calculateWordValue('UNIÃO'),
+                        options: shuffleArray([calculateWordValue('AMIZADE') + calculateWordValue('UNIÃO'), calculateWordValue('AMIZADE'), calculateWordValue('UNIÃO'), calculateWordValue('AMIZADE') - calculateWordValue('UNIÃO')])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual o próximo número na sequência: 5, 10, 15, 20, ...?',
+                        answer: 25,
+                        options: shuffleArray([25, 30, 10, 15])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Se "ESCOLA" vale ' + calculateWordValue('ESCOLA') + ', e "LIVRO" vale ' + calculateWordValue('LIVRO') + ', qual a soma dos dois valores?',
+                        answer: calculateWordValue('ESCOLA') + calculateWordValue('LIVRO'),
+                        options: shuffleArray([calculateWordValue('ESCOLA') + calculateWordValue('LIVRO'), calculateWordValue('ESCOLA') - calculateWordValue('LIVRO'), calculateWordValue('ESCOLA') * 2, calculateWordValue('LIVRO') * 2])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Tenho 5 dedos em uma mão. Quantos dedos tenho em duas mãos?',
+                        answer: 10,
+                        options: shuffleArray([10, 5, 8, 12])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual a próxima cor na sequência: vermelho, azul, vermelho, azul, ...?',
+                        answer: 'Vermelho',
+                        options: shuffleArray(['Verde', 'Amarelo', 'Vermelho', 'Azul'])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor de "ALEGRIA" menos o valor de "DOR"?',
+                        answer: calculateWordValue('ALEGRIA') - calculateWordValue('DOR'),
+                        options: shuffleArray([calculateWordValue('ALEGRIA') - calculateWordValue('DOR'), calculateWordValue('ALEGRIA') + calculateWordValue('DOR'), calculateWordValue('ALEGRIA') * 2, calculateWordValue('DOR') / 2])
+                    },
+                    {
+                        type: 'logic_puzzle',
+                        question: 'Se um dia tem 24 horas, quantas horas têm meio dia?',
+                        answer: 12,
+                        options: shuffleArray([12, 6, 24, 48])
+                    },
+                    {
+                        type: 'pattern_recognition',
+                        question: 'Qual o próximo número na sequência: 1, 1, 2, 3, 5, ...?',
+                        answer: 8, // Fibonacci
+                        options: shuffleArray([8, 6, 7, 9])
+                    },
+                    {
+                        type: 'math_word_simple',
+                        question: 'Qual o valor da palavra "SAÚDE" mais o valor de "VIDA"?',
+                        answer: calculateWordValue('SAÚDE') + calculateWordValue('VIDA'),
+                        options: shuffleArray([calculateWordValue('SAÚDE') + calculateWordValue('VIDA'), calculateWordValue('SAÚDE'), calculateWordValue('VIDA'), calculateWordValue('SAÚDE') - calculateWordValue('VIDA')])
+                    },
+                ]
+            };
+
+            /**
+             * Gera um conjunto de perguntas para o jogo com base na turma selecionada.
+             * Se `numQuestions` for fornecido, seleciona essa quantidade. Caso contrário, apenas popula o `questionPool`.
+             * @param {number} [numQuestions] - O número de questões a serem selecionadas para o jogo.
+             */
+            function generateQuestions(numQuestions = null) {
+                const selectedClass = GAME_STATE.student.class;
+                let questionsForClass = questionBanks[selectedClass];
+
+                if (!questionsForClass) {
+                    console.error(`Banco de questões não encontrado para a turma: ${selectedClass}`);
+                    questionsForClass = questionBanks['7º 01']; // Fallback para 7º ano
+                }
+
+                // Cria uma cópia embaralhada de todas as questões para o pool
+                GAME_STATE.questionPool = shuffleArray([...questionsForClass]);
+
+                if (numQuestions !== null) {
+                    // Seleciona as primeiras 'numQuestions' para o jogo atual
+                    GAME_STATE.questions = GAME_STATE.questionPool.splice(0, numQuestions);
+                }
+            }
+
+            /**
+             * Calcula o valor numérico de uma palavra, ignorando acentos e cedilhas.
+             * @param {string} word - A palavra a ser calculada.
+             * @returns {number} O valor numérico da palavra.
+             */
+            function calculateWordValue(word) {
+                let sum = 0;
+                // Normaliza a palavra: remove acentos e cedilha, converte para maiúsculas
+                const normalizedWord = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+                for (let i = 0; i < normalizedWord.length; i++) {
+                    const char = normalizedWord[i];
+                    if (CONFIG.letterValues[char]) {
+                        sum += CONFIG.letterValues[char];
+                    }
+                }
+                return sum;
+            }
+
+            /**
+             * Embaralha um array usando o algoritmo Fisher-Yates.
+             * @param {Array} array - O array a ser embaralhado.
+             * @returns {Array} O array embaralhado.
+             */
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]]; // Troca elementos
+                }
+                return array;
+            }
+
+            /**
+             * Gera a resolução de uma questão com base no seu tipo.
+             * @param {object} question - O objeto da questão.
+             * @returns {string} A string HTML da resolução.
+             */
+            function generateResolution(question) {
+                let resolutionText = '';
+                switch (question.type) {
+                    case 'math_word':
+                    case 'math_word_simple':
+                        let wordMatch = question.question.match(/"(.*?)"/);
+                        let word = wordMatch ? wordMatch[1] : '';
+                        let normalizedWord = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+                        let calculationSteps = '';
+                        let currentSum = 0;
+                        for (let i = 0; i < normalizedWord.length; i++) {
+                            const char = normalizedWord[i];
+                            const value = CONFIG.letterValues[char];
+                            if (value) {
+                                calculationSteps += `${char}(${value})`;
+                                currentSum += value;
+                                if (i < normalizedWord.length - 1) {
+                                    calculationSteps += ' + ';
+                                }
+                            }
+                        }
+                        resolutionText = `Para a palavra "${word}":<br><br>Cada letra tem um valor numérico:<br>${calculationSteps}<br><br>Total: ${currentSum}<br><br>Portanto, o valor numérico é ${question.answer}.`;
+
+                        // Adiciona resoluções específicas para as novas questões de "português com matemática"
+                        if (question.question.includes('Se "X" é o valor da palavra "PAZ" mais 3')) {
+                            resolutionText = `O valor da palavra "PAZ" é ${calculateWordValue('PAZ')}.<br>Então, X = ${calculateWordValue('PAZ')} + 3 = ${question.answer}.`;
+                        } else if (question.question.includes('quanto é 20 menos (o valor de "FLOR" dividido por 2)?')) {
+                            resolutionText = `O valor da palavra "FLOR" é ${calculateWordValue('FLOR')}.<br>A metade do valor de "FLOR" é ${calculateWordValue('FLOR')} / 2 = ${calculateWordValue('FLOR') / 2}.<br>Então, 20 - ${calculateWordValue('FLOR') / 2} = ${question.answer}.`;
+                        } else if (question.question.includes('Se "Y" é o valor da palavra "LUA" dividido por 4')) {
+                            resolutionText = `O valor da palavra "LUA" é ${calculateWordValue('LUA')}.<br>Então, Y = ${calculateWordValue('LUA')} / 4 = ${question.answer}.`;
+                        } else if (question.question.includes('Calcule: (valor de "CÃO" + valor de "GATO") - valor de "PATO"')) {
+                            resolutionText = `Valor de "CÃO": ${calculateWordValue('CÃO')}<br>Valor de "GATO": ${calculateWordValue('GATO')}<br>Valor de "PATO": ${calculateWordValue('PATO')}<br>(${calculateWordValue('CÃO')} + ${calculateWordValue('GATO')}) - ${calculateWordValue('PATO')} = ${question.answer}.`;
+                        } else if (question.question.includes('Se "Z" é o valor da palavra "MESA" multiplicado por 2')) {
+                            resolutionText = `O valor da palavra "MESA" é ${calculateWordValue('MESA')}.<br>Então, Z = ${calculateWordValue('MESA')} * 2 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é (o valor de "LIVRO" menos o valor de "PAPEL") multiplicado por 3?')) {
+                            resolutionText = `Valor de "LIVRO": ${calculateWordValue('LIVRO')}<br>Valor de "PAPEL": ${calculateWordValue('PAPEL')}<br>(${calculateWordValue('LIVRO')} - ${calculateWordValue('PAPEL')}) * 3 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "A" é o valor da palavra "ESCOLA" menos 6')) {
+                            resolutionText = `O valor da palavra "ESCOLA" é ${calculateWordValue('ESCOLA')}.<br>Então, A = ${calculateWordValue('ESCOLA')} - 6 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é 5 vezes o valor de "SOL" mais 3?')) {
+                            resolutionText = `O valor da palavra "SOL" é ${calculateWordValue('SOL')}.<br>Então, 5 * ${calculateWordValue('SOL')} + 3 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "B" é o valor da palavra "CÉU" dividido por 3')) {
+                            resolutionText = `O valor da palavra "CÉU" é ${calculateWordValue('CÉU')}.<br>Então, B = ${calculateWordValue('CÉU')} / 3 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é (o valor de "ESCOLA" + o valor de "LIVRO") dividido por 3?')) {
+                            resolutionText = `Valor de "ESCOLA": ${calculateWordValue('ESCOLA')}<br>Valor de "LIVRO": ${calculateWordValue('LIVRO')}<br>(${calculateWordValue('ESCOLA')} + ${calculateWordValue('LIVRO')}) / 3 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "C" é o valor da palavra "AMOR" multiplicado por 4')) {
+                            resolutionText = `O valor da palavra "AMOR" é ${calculateWordValue('AMOR')}.<br>Então, C = ${calculateWordValue('AMOR')} * 4 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é (o valor de "FELIZ" + o valor de "ALEGRE") dividido por 5?')) {
+                            resolutionText = `Valor de "FELIZ": ${calculateWordValue('FELIZ')}<br>Valor de "ALEGRE": ${calculateWordValue('ALEGRE')}<br>(${calculateWordValue('FELIZ')} + ${calculateWordValue('ALEGRE')}) / 5 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "D" é o valor da palavra "SAÚDE" mais 9')) {
+                            resolutionText = `O valor da palavra "SAÚDE" é ${calculateWordValue('SAÚDE')}.<br>Então, D = ${calculateWordValue('SAÚDE')} + 9 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é (o valor de "VERÃO" menos o valor de "CHUVA") dividido por 4?')) {
+                            resolutionText = `Valor de "VERÃO": ${calculateWordValue('VERÃO')}<br>Valor de "CHUVA": ${calculateWordValue('CHUVA')}<br>(${calculateWordValue('VERÃO')} - ${calculateWordValue('CHUVA')}) / 4 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "E" é o valor da palavra "MÚSICA" multiplicado por 5')) {
+                            resolutionText = `O valor da palavra "MÚSICA" é ${calculateWordValue('MÚSICA')}.<br>Então, E = ${calculateWordValue('MÚSICA')} * 5 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é (o valor de "ESTUDO" + o valor de "APRENDER") dividido por 6?')) {
+                            resolutionText = `Valor de "ESTUDO": ${calculateWordValue('ESTUDO')}<br>Valor de "APRENDER": ${calculateWordValue('APRENDER')}<br>(${calculateWordValue('ESTUDO')} + ${calculateWordValue('APRENDER')}) / 6 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "F" é o valor da palavra "FÉRIAS" menos 10')) {
+                            resolutionText = `O valor da palavra "FÉRIAS" é ${calculateWordValue('FÉRIAS')}.<br>Então, F = ${calculateWordValue('FÉRIAS')} - 10 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é (o valor de "CÉU" menos o valor de "NUVEM") dividido por 5?')) {
+                            resolutionText = `Valor de "CÉU": ${calculateWordValue('CÉU')}<br>Valor de "NUVEM": ${calculateWordValue('NUVEM')}<br>(${calculateWordValue('CÉU')} - ${calculateWordValue('NUVEM')}) / 5 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "G" é o valor da palavra "VIAGEM" mais 15')) {
+                            resolutionText = `O valor da palavra "VIAGEM" é ${calculateWordValue('VIAGEM')}.<br>Então, G = ${calculateWordValue('VIAGEM')} + 15 = ${question.answer}.`;
+                        } else if (question.question.includes('Quanto é (o valor de "AVENTURA" menos o valor de "MEDO") dividido por 5?')) {
+                            resolutionText = `Valor de "AVENTURA": ${calculateWordValue('AVENTURA')}<br>Valor de "MEDO": ${calculateWordValue('MEDO')}<br>(${calculateWordValue('AVENTURA')} - ${calculateWordValue('MEDO')}) / 5 = ${question.answer}.`;
+                        } else if (question.question.includes('Se "H" é o valor da palavra "FESTA" multiplicado por 6')) {
+                            resolutionText = `O valor da palavra "FESTA" é ${calculateWordValue('FESTA')}.<br>Então, H = ${calculateWordValue('FESTA')} * 6 = ${question.answer}.`;
+                        } else if (question.question.includes('Se 3 vezes o valor de "ESTUDO" menos 7 é 14')) {
+                            resolutionText = `Se 3 * (valor de "ESTUDO") - 7 = 14:<br>3 * (valor de "ESTUDO") = 14 + 7<br>3 * (valor de "ESTUDO") = 21<br>valor de "ESTUDO" = 21 / 3 = ${question.answer}.`;
+                        } else if (question.question.includes('(o valor de "CASA" elevado ao quadrado menos 4) dividido por 5')) {
+                            resolutionText = `Valor de "CASA": ${calculateWordValue('CASA')}<br>(${calculateWordValue('CASA')} * ${calculateWordValue('CASA')} - 4) / 5 = ${question.answer}.`;
+                        } else if (question.question.includes('(raiz quadrada do valor de "MUNDO" + 5) * 2 - 10')) {
+                            resolutionText = `Valor de "MUNDO": ${calculateWordValue('MUNDO')}<br>(sqrt(${calculateWordValue('MUNDO')}) + 5) * 2 - 10 = ${question.answer}.`;
+                        } else if (question.question.includes('2 vezes (o valor de "PAZ" + 4) é 18')) {
+                            resolutionText = `2 * (valor de "PAZ" + 4) = 18<br>valor de "PAZ" + 4 = 18 / 2<br>valor de "PAZ" + 4 = 9<br>valor de "PAZ" = 9 - 4 = ${question.answer}.`;
+                        } else if (question.question.includes('(o valor de "CASA" * o valor de "CASA") dividido por (2 + 1)')) {
+                            resolutionText = `Valor de "CASA": ${calculateWordValue('CASA')}<br>(${calculateWordValue('CASA')} * ${calculateWordValue('CASA')}) / 3 = ${question.answer}.`;
+                        } else if (question.question.includes('(o valor de "MUNDO" elevado ao quadrado menos 20) dividido pela raiz quadrada do valor de "MUNDO"')) {
+                            resolutionText = `Valor de "MUNDO": ${calculateWordValue('MUNDO')}<br>(${calculateWordValue('MUNDO')} * ${calculateWordValue('MUNDO')} - 20) / sqrt(${calculateWordValue('MUNDO')}) = ${question.answer}.`;
+                        } else if (question.question.includes('4 vezes (o valor de "AMOR" + 1) é 28')) {
+                            resolutionText = `4 * (valor de "AMOR" + 1) = 28<br>valor de "AMOR" + 1 = 28 / 4<br>valor de "AMOR" + 1 = 7<br>valor de "AMOR" = 7 - 1 = ${question.answer}.`;
+                        } else if (question.question.includes('((o valor de "SOL" elevado ao quadrado menos 1) dividido por 4) + raiz quadrada do valor de "CASA"')) {
+                            resolutionText = `Valor de "SOL": ${calculateWordValue('SOL')}<br>Valor de "CASA": ${calculateWordValue('CASA')}<br>(( ${calculateWordValue('SOL')} * ${calculateWordValue('SOL')} - 1) / 4) + sqrt(${calculateWordValue('CASA')}) = ${question.answer}.`;
+                        } else if (question.question.includes('(o valor de "LIVRO" menos 8) dividido por 3 é 4')) {
+                            resolutionText = `(valor de "LIVRO" - 8) / 3 = 4<br>valor de "LIVRO" - 8 = 4 * 3<br>valor de "LIVRO" - 8 = 12<br>valor de "LIVRO" = 12 + 8 = ${question.answer}.`;
+                        } else if (question.question.includes('((o valor de "FELIZ" elevado ao quadrado + 1) dividido por 5) - raiz quadrada do valor de "PAZ"')) {
+                            resolutionText = `Valor de "FELIZ": ${calculateWordValue('FELIZ')}<br>Valor de "PAZ": ${calculateWordValue('PAZ')}<br>(( ${calculateWordValue('FELIZ')} * ${calculateWordValue('FELIZ')} + 1) / 5) - sqrt(${calculateWordValue('PAZ')}) = ${question.answer}.`;
+                        } else if (question.question.includes('(o valor de "AMIZADE" + 12) multiplicado por 2 é 50')) {
+                            resolutionText = `(valor de "AMIZADE" + 12) * 2 = 50<br>valor de "AMIZADE" + 12 = 50 / 2<br>valor de "AMIZADE" + 12 = 25<br>valor de "AMIZADE" = 25 - 12 = ${question.answer}.`;
+                        } else if (question.question.includes('((o valor de "ESCOLA" elevado ao quadrado menos 4) dividido por 10) + raiz quadrada do valor de "ARVORE"')) {
+                            resolutionText = `Valor de "ESCOLA": ${calculateWordValue('ESCOLA')}<br>Valor de "ARVORE": ${calculateWordValue('ARVORE')}<br>(( ${calculateWordValue('ESCOLA')} * ${calculateWordValue('ESCOLA')} - 4) / 10) + sqrt(${calculateWordValue('ARVORE')}) = ${question.answer}.`;
+                        }
+                        break;
+                    case 'pattern_recognition':
+                        if (question.question.includes('2, 4, 6, 8, ...')) {
+                            resolutionText = `A sequência é de números pares em ordem crescente. O próximo número após 8 é 10.`;
+                        } else if (question.question.includes('A, C, E, G, ...')) {
+                            resolutionText = `A sequência pula uma letra do alfabeto a cada passo (B, D, F). Após G, a próxima letra pulando H é I.`;
+                        } else if (question.question.includes('1, 3, 5, 7, ...')) {
+                            resolutionText = `A sequência é de números ímpares em ordem crescente. O próximo número após 7 é 9.`;
+                        } else if (question.question.includes('Z, X, V, T, ...')) {
+                            resolutionText = `A sequência está em ordem alfabética decrescente, pulando uma letra a cada passo (Y, W, U, S). Após T, a próxima letra pulando S é R.`;
+                        } else if (question.question.includes('10, 20, 30, 40, ...')) {
+                            resolutionText = `A sequência é de múltiplos de 10 em ordem crescente. O próximo número após 40 é 50.`;
+                        } else if (question.question.includes('círculo, quadrado, círculo, quadrado, ...')) {
+                            resolutionText = `A sequência é de formas geométricas alternadas: círculo, quadrado. A próxima forma após quadrado é Círculo.`;
+                        } else if (question.question.includes('vermelho, azul, vermelho, azul, ...')) {
+                            resolutionText = `A sequência é de cores alternadas: vermelho, azul. A próxima cor após azul é Vermelho.`;
+                        } else if (question.question.includes('1, 1, 2, 3, 5, ...')) {
+                            resolutionText = `Esta é a sequência de Fibonacci, onde cada número é a soma dos dois anteriores (1+1=2, 1+2=3, 2+3=5). O próximo número após 5 é 3+5=8.`;
+                        }
+                        else {
+                            resolutionText = `A resposta correta é "${question.answer}".`;
+                        }
+                        break;
+                    case 'logic_puzzle':
+                        if (question.question.includes('Tenho 4 maçãs e como 2. Quantas maçãs sobraram?')) {
+                            resolutionText = `Se você tinha 4 maçãs e comeu 2, sobraram 4 - 2 = 2 maçãs.`;
+                        } else if (question.question.includes('Se hoje é terça-feira, que dia será amanhã?')) {
+                            resolutionText = `Se hoje é terça-feira, amanhã será Quarta-feira.`;
+                        } else if (question.question.includes('Tenho 3 lápis e ganho mais 1. Quantos lápis tenho agora?')) {
+                            resolutionText = `Se você tinha 3 lápis e ganhou mais 1, você tem 3 + 1 = 4 lápis.`;
+                        } else if (question.question.includes('Um pássaro tem 2 asas. Quantas asas 3 pássaros têm no total?')) {
+                            resolutionText = `Se um pássaro tem 2 asas, 3 pássaros terão 3 * 2 = 6 asas.`;
+                        } else if (question.question.includes('Se o café da manhã é a primeira refeição, qual a última refeição do dia?')) {
+                            resolutionText = `A última refeição do dia é o Jantar.`;
+                        } else if (question.question.includes('Se um ano tem 12 meses, quantos meses têm 2 anos?')) {
+                            resolutionText = `Se um ano tem 12 meses, 2 anos terão 2 * 12 = 24 meses.`;
+                        } else if (question.question.includes('Tenho 5 dedos em uma mão. Quantos dedos tenho em duas mãos?')) {
+                            resolutionText = `Se você tem 5 dedos em uma mão, em duas mãos você tem 5 * 2 = 10 dedos.`;
+                        } else if (question.question.includes('Se um dia tem 24 horas, quantas horas têm meio dia?')) {
+                            resolutionText = `Meio dia é a metade de um dia, então 24 / 2 = 12 horas.`;
+                        }
+                        else {
+                            resolutionText = `A resposta correta é "${question.answer}".`;
+                        }
+                        break;
+                    default:
+                        resolutionText = `A resposta correta é "${question.answer}".`;
+                        break;
+                }
+                return resolutionText;
+            }
+
+
+            /**
+             * Carrega e exibe a pergunta atual e suas opções.
+             */
+            function loadQuestion() {
+                DOM.displays.feedbackMessage.textContent = ''; // Limpa mensagem de feedback
+                DOM.displays.feedbackMessage.className = 'text-center mb-2'; // Reseta classes CSS
+                DOM.displays.optionsContainer.innerHTML = ''; // Limpa opções anteriores
+
+                const currentQuestion = GAME_STATE.questions[GAME_STATE.currentQuestionIndex];
+                if (!currentQuestion) {
+                    endGame(); // Se não houver mais perguntas, finaliza o jogo
+                    return;
+                }
+
+                // Atualiza o display da pergunta e pontuação
+                DOM.displays.questionNumber.textContent = GAME_STATE.currentQuestionIndex + 1;
+                DOM.displays.totalQuestions.textContent = GAME_STATE.questions.length;
+                DOM.displays.questionText.innerHTML = currentQuestion.question; // Usa innerHTML para renderizar LaTeX
+
+                // Cria e adiciona os botões de opção
+                currentQuestion.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'option-button';
+                    // Adiciona a letra da opção (A, B, C, D)
+                    const optionLetter = String.fromCharCode(65 + index); // 65 é o código ASCII para 'A'
+                    button.innerHTML = `<span class="font-semibold mr-2">${optionLetter})</span> ${option}`;
+                    button.dataset.index = index; // Para identificar a opção
+                    button.addEventListener('click', () => handleAnswer(option, currentQuestion.answer, button));
+                    DOM.displays.optionsContainer.appendChild(button);
+                });
+
+                // Habilita/desabilita botão de "Anterior" com base no limite de movimentos e índice
+                DOM.buttons.prevQuestion.disabled = GAME_STATE.currentPrevMoves >= GAME_STATE.maxPrevMoves || GAME_STATE.currentQuestionIndex === 0;
+
+                // **Lógica para exibir os botões de navegação ao carregar uma questão já respondida**
+                const answered = GAME_STATE.answeredQuestions[GAME_STATE.currentQuestionIndex];
+                if (answered) {
+                    DOM.panels.navigationButtons.classList.remove('hidden');
+                    // Reaplicar o feedback visual se a questão já foi respondida
+                    const options = DOM.displays.optionsContainer.children;
+                    for (const optionButton of options) {
+                        const optionText = optionButton.textContent.substring(optionButton.textContent.indexOf(')') + 1).trim();
+                        if (optionText == answered.selectedOption) {
+                            optionButton.classList.add(answered.isCorrect ? 'correct' : 'incorrect', 'selected-shadow');
+                        }
+                        if (!answered.isCorrect && optionText == answered.correctAnswer) {
+                            optionButton.classList.add('correct');
+                        }
+                    }
+                    displayFeedback(answered.isCorrect ? 'Resposta Correta!' : 'Resposta Incorreta.', answered.isCorrect ? 'correct' : 'incorrect');
+                    disableOptions(true); // Mantém opções desabilitadas se já respondida
+                } else {
+                    // Esconde botões de navegação se a pergunta ainda não foi respondida
+                    DOM.panels.navigationButtons.classList.add('hidden');
+                    disableOptions(false); // Habilita opções para a nova pergunta
+                }
+
+                // Define o texto do botão "Próxima Pergunta"
+                if (GAME_STATE.currentQuestionIndex === GAME_STATE.questions.length - 1) {
+                    DOM.buttons.nextQuestion.textContent = 'Finalizar Jogo';
+                } else {
+                    DOM.buttons.nextQuestion.textContent = 'Próxima Pergunta';
+                }
+            }
+
+            /**
+             * Lida com a resposta do usuário a uma pergunta.
+             * @param {string|number} selectedOption - A opção selecionada pelo usuário.
+             * @param {string|number} correctAnswer - A resposta correta para a pergunta.
+             * @param {HTMLElement} clickedButton - O botão HTML que foi clicado.
+             */
+            function handleAnswer(selectedOption, correctAnswer, clickedButton) {
+                // Se a questão já foi respondida e estamos apenas visualizando, não reprocessa
+                if (GAME_STATE.answeredQuestions[GAME_STATE.currentQuestionIndex] && GAME_STATE.answeredQuestions[GAME_STATE.currentQuestionIndex].selectedOption === selectedOption) {
+                    return; // Já clicou nesta opção e ela já foi processada
+                }
+
+                // Desabilita todas as opções para evitar múltiplos cliques
+                disableOptions(true);
+
+                const isCorrect = selectedOption === correctAnswer;
+                let answeredQuestion = {
+                    questionIndex: GAME_STATE.currentQuestionIndex,
+                    selectedOption: selectedOption,
+                    correctAnswer: correctAnswer,
+                    isCorrect: isCorrect,
+                    scoreEarned: 0
+                };
+
+                // Remove pontuação anterior se a questão está sendo re-respondida
+                if (GAME_STATE.answeredQuestions[GAME_STATE.currentQuestionIndex]) {
+                    GAME_STATE.score -= GAME_STATE.answeredQuestions[GAME_STATE.currentQuestionIndex].scoreEarned;
+                }
+
+                if (isCorrect) {
+                    playSound('C5'); // Som de acerto
+                    clickedButton.classList.add('correct', 'blinking-correct', 'selected-shadow');
+                    displayFeedback('Resposta Correta!', 'correct');
+                    GAME_STATE.score += CONFIG.scorePerCorrectAnswer;
+                    answeredQuestion.scoreEarned = CONFIG.scorePerCorrectAnswer;
+
+                    // Exibe o pop-up de resolução
+                    const currentQuestion = GAME_STATE.questions[GAME_STATE.currentQuestionIndex];
+                    DOM.displays.resolutionContent.innerHTML = generateResolution(currentQuestion);
+                    showModal(DOM.modals.resolution, DOM.modals.resolutionOverlay);
+
+                } else {
+                    playSound('C3'); // Som de erro
+                    clickedButton.classList.add('incorrect', 'selected-shadow');
+                    displayFeedback('Resposta Incorreta.', 'incorrect');
+
+                    // Encontra e destaca a resposta correta
+                    const options = DOM.displays.optionsContainer.children;
+                    for (const optionButton of options) {
+                        // Compara o conteúdo do texto do botão (removendo a letra da opção)
+                        const optionText = optionButton.textContent.substring(optionButton.textContent.indexOf(')') + 1).trim();
+                        if (optionText == correctAnswer) { // Usa == para comparação de números/strings
+                            optionButton.classList.add('correct', 'blinking-correct');
+                            break;
+                        }
+                    }
+                }
+
+                // Armazena a resposta para permitir revisão/navegação
+                GAME_STATE.answeredQuestions[GAME_STATE.currentQuestionIndex] = answeredQuestion;
+
+                DOM.displays.score.textContent = GAME_STATE.score.toFixed(1); // Exibe pontuação com uma casa decimal
+
+                // Mostra botões de navegação após a resposta
+                DOM.panels.navigationButtons.classList.remove('hidden');
+
+                // Se for a última questão, o botão "Próxima" deve finalizar
+                if (GAME_STATE.currentQuestionIndex === GAME_STATE.questions.length - 1) {
+                    DOM.buttons.nextQuestion.textContent = 'Finalizar Jogo';
+                } else {
+                    DOM.buttons.nextQuestion.textContent = 'Próxima Pergunta';
+                }
+            }
+
+            /**
+             * Habilita ou desabilita todos os botões de opção.
+             * @param {boolean} disable - Se true, desabilita os botões; se false, habilita e remove estilos de feedback.
+             */
+            function disableOptions(disable) {
+                const options = DOM.displays.optionsContainer.children;
+                for (const optionButton of options) {
+                    if (disable) {
+                        optionButton.classList.add('disabled');
+                    } else {
+                        // Remove todas as classes de feedback e disabled
+                        optionButton.classList.remove('correct', 'incorrect', 'disabled', 'blinking-correct', 'selected-shadow');
+                    }
+                    optionButton.disabled = disable;
+                }
+            }
+
+            /**
+             * Avança para a próxima pergunta ou finaliza o jogo se for a última.
+             */
+            function goToNextQuestion() {
+                if (GAME_STATE.currentQuestionIndex < GAME_STATE.questions.length - 1) {
+                    GAME_STATE.currentQuestionIndex++;
+                    loadQuestion();
+                } else {
+                    endGame(); // Finaliza o jogo
+                }
+            }
+
+            /**
+             * Volta para a pergunta anterior, se permitido.
+             */
+            function goToPreviousQuestion() {
+                if (GAME_STATE.currentQuestionIndex > 0 && GAME_STATE.currentPrevMoves < GAME_STATE.maxPrevMoves) {
+                    const previousQuestionIndex = GAME_STATE.currentQuestionIndex - 1;
+                    const answered = GAME_STATE.answeredQuestions[previousQuestionIndex];
+
+                    // Se a questão anterior foi respondida incorretamente, substitua-a por uma nova
+                    if (answered && !answered.isCorrect) {
+                        if (GAME_STATE.questionPool.length > 0) {
+                            const newQuestion = GAME_STATE.questionPool.shift(); // Pega a primeira questão do pool
+                            GAME_STATE.questions[previousQuestionIndex] = newQuestion; // Substitui a questão
+                            GAME_STATE.answeredQuestions[previousQuestionIndex] = null; // Limpa o estado de resposta para a nova questão
+                            console.log(`Questão ${previousQuestionIndex + 1} substituída por uma nova.`);
+                        } else {
+                            console.warn("Não há mais questões novas disponíveis no pool para substituir.");
+                        }
+                    }
+
+                    GAME_STATE.currentQuestionIndex--;
+                    GAME_STATE.currentPrevMoves++;
+                    loadQuestion(); // Carrega a questão (pode ser a mesma ou a nova)
+
+                    // Ao voltar, as opções devem ser editáveis novamente (se for uma nova questão)
+                    // ou manter o estado se for uma questão já respondida corretamente
+                    if (!GAME_STATE.answeredQuestions[GAME_STATE.currentQuestionIndex]) {
+                        disableOptions(false); // Reabilita todas as opções e remove estilos de feedback
+                        DOM.displays.feedbackMessage.textContent = ''; // Limpa a mensagem de feedback
+                    }
+
+                    // Os botões de navegação devem ser visíveis para permitir o avanço
+                    DOM.panels.navigationButtons.classList.remove('hidden');
+                }
+            }
+
+            /**
+             * Inicia o jogo, validando os dados do aluno e resetando o estado.
+             */
+            function startGameFlow() {
+                // Validações básicas de entrada
+                if (!DOM.inputs.studentName.value || !DOM.inputs.studentSurname.value || !DOM.inputs.studentClass.value) {
+                    showMessageBox('Por favor, preencha seu nome, sobrenome e selecione sua turma para iniciar o jogo.', 'Dados do Aluno Incompletos', 'info');
+                    return;
+                }
+
+                GAME_STATE.student.name = DOM.inputs.studentName.value.trim().toUpperCase();
+                GAME_STATE.student.surname = DOM.inputs.studentSurname.value.trim().toUpperCase();
+                GAME_STATE.student.class = DOM.inputs.studentClass.value;
+
+                // Reinicia o estado do jogo para um novo início
+                GAME_STATE.currentQuestionIndex = 0;
+                GAME_STATE.score = 0.0;
+                GAME_STATE.answeredQuestions = [];
+                GAME_STATE.currentPrevMoves = 0;
+                GAME_STATE.calculatorUsesUsed = 0; // Reseta usos da calculadora
+
+                // Popula o questionPool antes de mostrar o modal de quantidade de questões
+                generateQuestions(); // Isso preenche GAME_STATE.questionPool
+
+                showQuestionQuantityModal(); // Exibe o pop-up de quantidade de questões
+            }
+
+            /**
+             * Exibe o modal para o usuário escolher a quantidade de questões.
+             */
+            function showQuestionQuantityModal() {
+                const maxAvailableQuestions = GAME_STATE.questionPool.length;
+                const maxAllowed = Math.min(CONFIG.maxSelectableQuestions, maxAvailableQuestions);
+
+                DOM.displays.maxQuestionsDisplay.textContent = maxAllowed;
+                DOM.inputs.questionQuantity.max = maxAllowed;
+                DOM.inputs.questionQuantity.value = Math.min(CONFIG.totalQuestions, maxAllowed); // Define um valor padrão razoável
+
+                showModal(DOM.modals.questionQuantity, DOM.modals.questionQuantityOverlay);
+            }
+
+            /**
+             * Confirma a quantidade de questões escolhida pelo usuário e inicia o jogo.
+             */
+            function confirmQuestionQuantity() {
+                const quantity = parseInt(DOM.inputs.questionQuantity.value);
+                const maxAvailableQuestions = GAME_STATE.questionPool.length;
+                const maxAllowed = Math.min(CONFIG.maxSelectableQuestions, maxAvailableQuestions);
+
+                if (isNaN(quantity) || quantity <= 0 || quantity > maxAllowed) {
+                    showMessageBox(`Por favor, insira um número válido de questões entre 1 e ${maxAllowed}.`, 'Quantidade Inválida', 'error');
+                    return;
+                }
+
+                CONFIG.totalQuestions = quantity; // Atualiza o total de questões do jogo
+                generateQuestions(CONFIG.totalQuestions); // Seleciona as questões para o jogo
+
+                // Calcula o limite de uso da calculadora com base na turma
+                if (GAME_STATE.student.class === 'AEE') {
+                    GAME_STATE.calculatorUsesAvailable = Number.MAX_SAFE_INTEGER; // Sem restrições
+                } else {
+                    GAME_STATE.calculatorUsesAvailable = Math.floor((CONFIG.totalQuestions / 5) * 2); // 2 vezes a cada 5 questões
+                }
+                updateCalculatorButtonState(); // Atualiza o estado do botão da calculadora
+
+                hideModal(DOM.modals.questionQuantity, DOM.modals.questionQuantityOverlay);
+                showScreen('game'); // Exibe a tela do jogo
+                loadQuestion(); // Carrega a primeira pergunta
+            }
+
+            /**
+             * Finaliza o jogo, exibe a tela final com a pontuação do aluno.
+             */
+            function endGame() {
+                showScreen('final'); // Exibe a tela final
+                DOM.displays.finalStudentName.textContent = `${GAME_STATE.student.name} ${GAME_STATE.student.surname}`;
+                DOM.displays.finalStudentClass.textContent = GAME_STATE.student.class;
+                DOM.displays.finalScore.textContent = GAME_STATE.score.toFixed(1); // Exibe pontuação final
+
+                // Captura e exibe a data e hora atuais
+                const now = new Date();
+                const formattedDateTime = now.toLocaleString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+                DOM.displays.finalDateTime.textContent = formattedDateTime;
+
+                // Oculta a caixa de ferramentas ao finalizar o jogo
+                DOM.panels.toolsBox.style.display = 'none';
+                // Limpa inputs para a próxima vez que o jogo for iniciado
+                DOM.inputs.studentName.value = '';
+                DOM.inputs.studentSurname.value = '';
+                DOM.inputs.studentClass.value = '';
+            }
+
+            /**
+             * Reinicia o jogo para a tela inicial (usado após senha de administrador).
+             */
+            function resetGameAdmin() {
+                hideModal(DOM.modals.password, DOM.modals.passwordOverlay); // Oculta o modal de senha
+                showScreen('start'); // Volta para a tela inicial
+                // Limpa os campos de entrada, caso não estejam vazios
+                DOM.inputs.studentName.value = '';
+                DOM.inputs.studentSurname.value = '';
+                DOM.inputs.studentClass.value = '';
+                DOM.inputs.adminPassword.value = ''; // Limpa campo da senha do admin
+                // Reinicia o estado do jogo para um novo início completo
+                GAME_STATE.currentQuestionIndex = 0;
+                GAME_STATE.score = 0.0;
+                GAME_STATE.answeredQuestions = [];
+                GAME_STATE.currentPrevMoves = 0;
+                GAME_STATE.questions = []; // Limpa as questões do jogo anterior
+                GAME_STATE.questionPool = []; // Limpa o pool de questões
+                CONFIG.totalQuestions = 20; // Reseta para o valor padrão
+                GAME_STATE.calculatorUsesUsed = 0; // Reseta usos da calculadora
+                GAME_STATE.calculatorUsesAvailable = 0; // Reseta usos disponíveis
+                updateCalculatorButtonState(); // Atualiza o estado do botão da calculadora
+            }
+
+            // --- Inicialização do Jogo ---
+            function initialize() {
+                // Preenche o seletor de turmas com as opções configuradas
+                CONFIG.classes.forEach(cls => {
+                    const option = document.createElement('option');
+                    option.value = cls;
+                    option.textContent = cls;
+                    DOM.inputs.studentClass.appendChild(option);
+                });
+
+                // Preenche o pop-up de valores das letras
+                for (const letter in CONFIG.letterValues) {
+                    const span = document.createElement('span');
+                    span.textContent = `${letter}=${CONFIG.letterValues[letter]}`;
+                    DOM.displays.letterValuesContent.appendChild(span);
+                }
+
+                showScreen('start'); // Exibe a tela de início por padrão
+                DOM.panels.toolsBox.style.display = 'none'; // Oculta a caixa de ferramentas inicialmente
+                updateCalculatorButtonState(); // Inicializa o estado do botão da calculadora
+            }
+
+            // --- Gerenciamento de Eventos ---
+            DOM.buttons.startGame.addEventListener('click', startGameFlow);
+            DOM.buttons.nextQuestion.addEventListener('click', goToNextQuestion);
+            DOM.buttons.prevQuestion.addEventListener('click', goToPreviousQuestion);
+            DOM.buttons.restartGameFinal.addEventListener('click', () => showModal(DOM.modals.password, DOM.modals.passwordOverlay));
+            DOM.buttons.backToStart.addEventListener('click', resetGameAdmin);
+
+            // Eventos do modal de senha do administrador
+            DOM.buttons.submitAdminPassword.addEventListener('click', () => {
+                if (DOM.inputs.adminPassword.value === GAME_STATE.adminPassword) {
+                    resetGameAdmin();
+                } else {
+                    showMessageBox('Senha incorreta!', 'Erro de Autenticação', 'error');
+                    DOM.inputs.adminPassword.value = '';
+                }
+            });
+            DOM.buttons.cancelAdminPassword.addEventListener('click', () => hideModal(DOM.modals.password, DOM.modals.passwordOverlay));
+            DOM.modals.passwordOverlay.addEventListener('click', () => hideModal(DOM.modals.password, DOM.modals.passwordOverlay));
+
+            // Eventos para o novo modal de quantidade de questões
+            DOM.buttons.submitQuestionQuantity.addEventListener('click', confirmQuestionQuantity);
+            DOM.buttons.cancelQuestionQuantity.addEventListener('click', () => {
+                hideModal(DOM.modals.questionQuantity, DOM.modals.questionQuantityOverlay);
+                showScreen('start'); // Volta para a tela inicial se cancelar
+            });
+            DOM.modals.questionQuantityOverlay.addEventListener('click', () => {
+                hideModal(DOM.modals.questionQuantity, DOM.modals.questionQuantityOverlay);
+                showScreen('start'); // Volta para a tela inicial se clicar fora
+            });
+
+            // Eventos do generic message box
+            DOM.buttons.closeGenericMessageBox.addEventListener('click', () => hideModal(DOM.modals.genericMessageBox, DOM.modals.genericMessageBoxOverlay));
+            DOM.modals.genericMessageBoxOverlay.addEventListener('click', () => hideModal(DOM.modals.genericMessageBox, DOM.modals.genericMessageBoxOverlay));
+
+            // Eventos dos botões da caixa de ferramentas
+            DOM.buttons.mute.addEventListener('click', () => {
+                GAME_STATE.isMuted = !GAME_STATE.isMuted;
+                DOM.buttons.mute.textContent = GAME_STATE.isMuted ? '🔇 Som' : '🔊 Som';
+            });
+            DOM.buttons.toggleLetterValues.addEventListener('click', () => togglePopup(DOM.modals.letterValues, DOM.buttons.toggleLetterValues));
+            DOM.buttons.toggleCalculator.addEventListener('click', () => togglePopup(DOM.modals.calculator, DOM.buttons.toggleCalculator));
+
+            // Eventos para o novo modal de resolução
+            DOM.buttons.closeResolutionModal.addEventListener('click', () => hideModal(DOM.modals.resolution, DOM.modals.resolutionOverlay));
+            DOM.modals.resolutionOverlay.addEventListener('click', () => hideModal(DOM.modals.resolution, DOM.modals.resolutionOverlay));
+
+            // --- Lógica da Calculadora ---
+            let calculator = {
+                displayValue: '0',
+                currentExpression: '',
+                lastInputWasOperator: false,
+                lastInputWasEquals: false
+            };
+
+            /**
+             * Atualiza o valor exibido no display da calculadora.
+             */
+            function updateCalculatorDisplay() {
+                DOM.displays.calculatorDisplay.value = calculator.displayValue;
+            }
+
+            /**
+             * Processa a entrada de um dígito na calculadora.
+             * @param {string} digit - O dígito a ser adicionado.
+             */
+            function inputDigit(digit) {
+                if (calculator.lastInputWasEquals) {
+                    calculator.currentExpression = digit;
+                    calculator.displayValue = digit;
+                    calculator.lastInputWasEquals = false;
+                    calculator.lastInputWasOperator = false;
+                } else if (calculator.lastInputWasOperator) {
+                    calculator.currentExpression += digit;
+                    calculator.displayValue = calculator.currentExpression;
+                    calculator.lastInputWasOperator = false;
+                } else {
+                    if (calculator.displayValue === '0' && digit !== '.') {
+                        calculator.displayValue = digit;
+                        calculator.currentExpression = digit;
+                    } else {
+                        calculator.displayValue += digit;
+                        calculator.currentExpression += digit;
+                    }
+                }
+                updateCalculatorDisplay();
+            }
+
+            /**
+             * Processa a entrada de um ponto decimal na calculadora.
+             * @param {string} dot - O caractere de ponto decimal.
+             */
+            function inputDecimal(dot) {
+                if (calculator.lastInputWasEquals) {
+                    calculator.currentExpression = '0' + dot;
+                    calculator.displayValue = '0' + dot;
+                    calculator.lastInputWasEquals = false;
+                    calculator.lastInputWasOperator = false;
+                }
+                else if (calculator.lastInputWasOperator) {
+                    calculator.currentExpression += '0' + dot;
+                    calculator.displayValue = calculator.currentExpression;
+                    calculator.lastInputWasOperator = false;
+                }
+                else {
+                    const parts = calculator.currentExpression.split(/[\+\-\*\/]/);
+                    const lastPart = parts[parts.length - 1];
+                    if (!lastPart.includes(dot)) {
+                        calculator.displayValue += dot;
+                        calculator.currentExpression += dot;
+                    }
+                }
+                updateCalculatorDisplay();
+            }
+
+            /**
+             * Lida com a seleção de um operador na calculadora.
+             * @param {string} operator - O próximo operador (+, -, *, /).
+             */
+            function handleOperator(operator) {
+                if (calculator.currentExpression === '' && operator !== '-') {
+                    return;
+                }
+                if (calculator.lastInputWasOperator) {
+                    calculator.currentExpression = calculator.currentExpression.slice(0, -1) + operator;
+                } else {
+                    calculator.currentExpression += operator;
+                }
+                calculator.displayValue = calculator.currentExpression;
+                calculator.lastInputWasOperator = true;
+                calculator.lastInputWasEquals = false;
+                updateCalculatorDisplay();
+            }
+
+            /**
+             * Calcula o resultado da expressão atual na calculadora.
+             */
+            function calculateResult() {
+                try {
+                    let expressionToEvaluate = calculator.currentExpression.replace(/×/g, '*').replace(/÷/g, '/');
+                    expressionToEvaluate = expressionToEvaluate.replace(/[\+\-\*\/]$/, '');
+
+                    let result = eval(expressionToEvaluate);
+
+                    if (!isFinite(result)) {
+                        calculator.displayValue = 'Erro';
+                        calculator.currentExpression = '';
+                    } else {
+                        calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+                        calculator.currentExpression = calculator.displayValue;
+                    }
+                } catch (error) {
+                    calculator.displayValue = 'Erro';
+                    calculator.currentExpression = '';
+                    console.error("Erro na avaliação da expressão:", error);
+                }
+                calculator.lastInputWasEquals = true;
+                calculator.lastInputWasOperator = false;
+                updateCalculatorDisplay();
+            }
+
+            /**
+             * Reseta o estado da calculadora para o valor inicial.
+             */
+            function resetCalculator() {
+                calculator.displayValue = '0';
+                calculator.currentExpression = '';
+                calculator.lastInputWasOperator = false;
+                calculator.lastInputWasEquals = false;
+                updateCalculatorDisplay();
+            }
+
+            // Adiciona event listeners a todos os botões da calculadora
+            DOM.modals.calculator.querySelectorAll('.calculator-button').forEach(button => {
+                button.addEventListener('click', event => {
+                    const { target } = event;
+                    if (!target.matches('button')) {
+                        return;
+                    }
+
+                    if (target.classList.contains('operator')) {
+                        handleOperator(target.textContent);
+                        return;
+                    }
+
+                    if (target.classList.contains('decimal')) {
+                        inputDecimal(target.textContent);
+                        return;
+                    }
+
+                    if (target.classList.contains('clear')) {
+                        resetCalculator();
+                        return;
+                    }
+
+                    if (target.classList.contains('equals')) {
+                        calculateResult();
+                        return;
+                    }
+
+                    inputDigit(target.textContent);
+                });
+            });
+
+            // Inicia o jogo ao carregar a página
+            initialize();
+        });
+    </script>
+</body>
+</html>
